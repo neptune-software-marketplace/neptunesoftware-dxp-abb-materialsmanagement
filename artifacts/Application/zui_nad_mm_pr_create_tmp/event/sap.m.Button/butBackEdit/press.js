@@ -1,0 +1,1 @@
+oApp.backDetail();

@@ -1,0 +1,2 @@
+oApp.backDetail();
+modeltabPRItems.refresh();
