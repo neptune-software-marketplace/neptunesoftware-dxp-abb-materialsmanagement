@@ -1,0 +1,203 @@
+INTERFACE zif_nad_mm_pr_create_tmp_get
+  PUBLIC .
+
+
+  INTERFACES /neptune/if_dr_operation .
+  INTERFACES /neptune/if_dr_oper_get .
+
+  TYPES:
+    BEGIN OF ty_cost,
+      kostl TYPE cskt-kostl,
+      mctxt TYPE cskt-mctxt,
+    END OF ty_cost .
+  TYPES:
+    BEGIN OF ty_material,
+      matnr TYPE matnr,
+      maktx TYPE maktx,
+      matkl TYPE matkl,
+      meins TYPE meins,
+      labst TYPE labst,
+      vrkme TYPE vrkme,
+      netpr TYPE netpr,
+      waers TYPE waers,
+      eindt TYPE eindt,
+    END OF ty_material .
+  TYPES:
+    BEGIN OF ty_settings,
+      werks TYPE werks_d,
+      ekorg TYPE ekorg,
+      ekgrp TYPE ekgrp,
+      badat TYPE badat,
+      lgort TYPE lgort_d,
+      bbsrt TYPE bbsrt,
+      kokrs TYPE kokrs,
+    END OF ty_settings .
+  TYPES:
+    BEGIN OF ty_attachment,
+      banfn    TYPE banfn,
+      instid_b TYPE sibfboriid,
+      crdat    TYPE so_dat_cr,
+      crtim    TYPE so_tim_cr,
+      docdes   TYPE so_obj_des,
+      file_ext TYPE file_ext,
+      data     TYPE string,
+    END OF ty_attachment .
+  TYPES:
+    tt_attachment TYPE STANDARD TABLE OF ty_attachment WITH NON-UNIQUE DEFAULT KEY.
+  TYPES:
+    BEGIN OF ty_text,
+      textid     TYPE textid,
+      textid_txt TYPE string,
+      tdfdate    TYPE tdfdate,
+      text       TYPE string,
+    END OF ty_text .
+  TYPES:
+    tt_text TYPE STANDARD TABLE OF ty_text WITH NON-UNIQUE DEFAULT KEY.
+  TYPES:
+    BEGIN OF ty_account,
+      category     TYPE string,
+      cost_ctr     TYPE kostl,
+      cost_ctr_txt TYPE string,
+      distr_perc   TYPE string,
+      g_l_acct     TYPE saknr,
+      g_l_acct_txt TYPE string,
+      order_no     TYPE string,
+      order_no_txt TYPE string,
+    END OF ty_account .
+  TYPES:
+    tt_account TYPE STANDARD TABLE OF ty_account WITH NON-UNIQUE DEFAULT KEY.
+  TYPES:
+    BEGIN OF ty_pr_list,
+      selected     TYPE string,
+      banfn        TYPE banfn,
+      bnfpo        TYPE bnfpo,
+      ekgrp        TYPE ekgrp,
+      ernam        TYPE ernam,
+      badat        TYPE badat,
+      txz01        TYPE txz01,
+      matnr        TYPE matnr,
+      menge        TYPE bamng,
+      meins        TYPE meins,
+      status       TYPE string,
+      status_icon  TYPE string,
+      status_state TYPE string,
+      preis        TYPE bapre,
+      peinh        TYPE epein,
+      waers        TYPE waers,
+      netwr        TYPE bapre,
+      search       TYPE string,
+      eknam        TYPE eknam,
+      banpr        TYPE banpr,
+    END OF ty_pr_list .
+  TYPES:
+    tt_pr_list TYPE STANDARD TABLE OF ty_pr_list WITH NON-UNIQUE DEFAULT KEY.
+  TYPES:
+    BEGIN OF ty_item,
+      preq_no      TYPE banfn,
+      preq_item    TYPE bnfpo,
+      pur_group    TYPE ekgrp,
+      pur_name     TYPE eknam,
+      po_number    TYPE ebeln,
+      po_item      TYPE ebelp,
+      short_text   TYPE txz01,
+      material     TYPE matnr,
+      plant        TYPE ewerk,
+      plant_txt    TYPE string,
+      quantity     TYPE bamng,
+      unit         TYPE bamei,
+      deliv_date   TYPE eindt,
+      currency     TYPE waers,
+      c_amt_bapi   TYPE baprebapi,
+      price_unit   TYPE epein,
+      mat_grp      TYPE matkl,
+      mat_grp_txt  TYPE string,
+      netwr        TYPE baprebapi,
+      preq_date    TYPE badat,
+      cost_ctr     TYPE kostl,
+      cost_ctr_txt TYPE string,
+      status       TYPE string,
+      status_icon  TYPE string,
+      status_state TYPE string,
+      text         TYPE string,
+      acctasscat   TYPE string,
+      order_no     TYPE string,
+      order_no_txt TYPE string,
+    END OF ty_item .
+  TYPES:
+    tt_pr_items TYPE STANDARD TABLE OF ty_item WITH NON-UNIQUE DEFAULT KEY.
+  TYPES:
+    BEGIN OF ty_strategy,
+      code   TYPE string,
+      desc   TYPE string,
+      proc   TYPE string,
+      status TYPE string,
+    END OF ty_strategy .
+  TYPES:
+    tt_strategy TYPE STANDARD TABLE OF ty_strategy WITH NON-UNIQUE DEFAULT KEY.
+  TYPES:
+    BEGIN OF ty_pr_header,
+      preq_no   TYPE banfn,
+      preq_date TYPE string,
+      doc_type  TYPE eban-bsart,
+      text      TYPE string,
+    END OF ty_pr_header .
+  TYPES:
+    BEGIN OF ty_order,
+      aufnr TYPE aufk-aufnr,
+      auart TYPE aufk-auart,
+      ktext TYPE aufk-ktext,
+    END OF ty_order .
+  TYPES:
+    tt_order TYPE STANDARD TABLE OF ty_order WITH NON-UNIQUE DEFAULT KEY.
+  TYPES:
+    tt_t006a TYPE STANDARD TABLE OF t006a WITH NON-UNIQUE DEFAULT KEY.
+  TYPES:
+    tt_t023t TYPE STANDARD TABLE OF t023t WITH NON-UNIQUE DEFAULT KEY.
+  TYPES:
+    tt_t161t TYPE STANDARD TABLE OF t161t WITH NON-UNIQUE DEFAULT KEY.
+
+  METHODS add
+    EXPORTING
+      !wa_pr_header TYPE ty_pr_header .
+  METHODS get_attachment
+    IMPORTING
+      !server        TYPE REF TO /neptune/cl_nad_server OPTIONAL
+      !key           TYPE string OPTIONAL
+      !ajax_value    TYPE string OPTIONAL
+    EXPORTING
+      !wa_attachment TYPE ty_attachment .
+  METHODS get_dimensions
+    EXPORTING
+      !it_t006a TYPE tt_t006a .
+  METHODS get_mat_group
+    EXPORTING
+      !it_t023t TYPE tt_t023t .
+  METHODS get_pr_detail
+    IMPORTING
+      !ajax_value    TYPE string
+    EXPORTING
+      !wa_detail     TYPE ty_item
+      !it_strategy   TYPE tt_strategy
+    CHANGING
+      !it_attachment TYPE tt_attachment
+      !it_text       TYPE tt_text
+      !it_account    TYPE tt_account .
+  METHODS get_pr_edit
+    IMPORTING
+      !ajax_value    TYPE string
+      !it_attachment TYPE tt_attachment
+      !it_text       TYPE tt_text
+      !it_account    TYPE tt_account
+    EXPORTING
+      !wa_pr_header  TYPE ty_pr_header
+      !it_pr_items   TYPE tt_pr_items .
+  METHODS get_pr_list
+    EXPORTING
+      !it_pr_list TYPE tt_pr_list
+      !it_t161t   TYPE tt_t161t .
+  METHODS search_order
+    IMPORTING
+      !wa_order TYPE ty_order
+    EXPORTING
+      !it_order TYPE tt_order .
+ENDINTERFACE.

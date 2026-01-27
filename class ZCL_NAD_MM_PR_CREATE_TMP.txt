@@ -1,0 +1,1586 @@
+class ZCL_NAD_MM_PR_CREATE_TMP definition
+  public
+  create public .
+
+public section.
+
+  interfaces /NEPTUNE/IF_DR_OPERATION .
+  interfaces /NEPTUNE/IF_DR_OPER_GET .
+  interfaces /NEPTUNE/IF_DR_OPER_POST .
+  interfaces /NEPTUNE/IF_DR_RUNTIME .
+  interfaces ZIF_NAD_MM_PR_CREATE_TMP_GET .
+  interfaces ZIF_NAD_MM_PR_CREATE_TMP_POST .
+
+  types:
+    begin of ty_settings,
+          werks         type werks_d,
+          ekorg        type ekorg,
+          ekgrp         type ekgrp,
+          badat         type badat,
+          lgort         type lgort_d,
+          bbsrt         type bbsrt,
+          kokrs        type kokrs,
+    end of ty_settings .
+  types:
+    begin of ty_item,
+          preq_no	     type	banfn,
+          preq_item	   type bnfpo,
+          pur_group	   type	ekgrp,
+          pur_name     type eknam,
+          po_number    type ebeln,
+          po_item      type ebelp,
+          short_text   type txz01,
+          material     type matnr,
+          plant	       type	ewerk,
+          plant_txt	   type string,
+          quantity     type bamng,
+          unit         type bamei,
+          deliv_date   type eindt,
+          currency     type waers,
+          c_amt_bapi   type baprebapi,
+          price_unit   type epein,
+          mat_grp	     type	matkl,
+          mat_grp_txt	 type string,
+          netwr	       type baprebapi,
+          preq_date	   type badat,
+          cost_ctr     type kostl,
+          cost_ctr_txt type string,
+          status       type string,
+          status_icon  type string,
+          status_state type string,
+          text         type string,
+          acctasscat   type string,
+          order_no     type string,
+          order_no_txt type string,
+    end of ty_item .
+  types:
+    tt_item type standard table of ty_item .
+  types:
+    begin of ty_pr_header,
+          preq_no	     type	banfn,
+          preq_date    type string,
+          doc_type     type eban-bsart,
+          text         type string,
+    end of ty_pr_header .
+
+  data GV_SETTINGS type TY_SETTINGS .
+
+  methods CONSTRUCTOR .
+  methods GET_DEFAULT_VALUES .
+  methods SAVE_CHANGE
+    importing
+      !SERVER type ref to /NEPTUNE/CL_NAD_SERVER
+      !IT_PR_ITEMS type TT_ITEM
+      !WA_PR_HEADER type TY_PR_HEADER
+    changing
+      !WA_MESSAGE type /NEPTUNE/MESSAGE .
+  methods SAVE_CREATE
+    importing
+      !SERVER type ref to /NEPTUNE/CL_NAD_SERVER
+      !IT_PR_ITEMS type TT_ITEM
+    changing
+      !WA_MESSAGE type /NEPTUNE/MESSAGE
+      !WA_PR_HEADER type TY_PR_HEADER .
+  methods SAVE_TEXT
+    importing
+      !WA_PR_HEADER type TY_PR_HEADER .
+protected section.
+private section.
+ENDCLASS.
+
+
+
+CLASS ZCL_NAD_MM_PR_CREATE_TMP IMPLEMENTATION.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Public Method ZCL_NAD_MM_PR_CREATE_TMP->CONSTRUCTOR
+* +-------------------------------------------------------------------------------------------------+
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+method constructor.
+
+  /neptune/cl_dr_utilities=>instance->fill_attributes_with_object( io_object = me ).
+
+endmethod.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Public Method ZCL_NAD_MM_PR_CREATE_TMP->GET_DEFAULT_VALUES
+* +-------------------------------------------------------------------------------------------------+
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+method get_default_values.
+* Get Parameter ID for Plant
+  get parameter id 'WRK' field gv_settings-werks.
+
+  if gv_settings-werks is initial.
+     gv_settings-werks = '1000'.
+  endif.
+
+* Get Parameter ID for Purchase Org
+  get parameter id 'EKO' field gv_settings-ekorg.
+
+  if gv_settings-ekorg is initial.
+     gv_settings-ekorg = '1000'.
+  endif.
+
+* Get Parameter ID for Purchase group
+  get parameter id 'EKG' field gv_settings-ekgrp.
+
+  if gv_settings-ekgrp is initial.
+     gv_settings-ekgrp = 'Z01'.
+  endif.
+
+* Get Parameter ID for Storage Location
+  get parameter id 'LAG' field gv_settings-lgort.
+
+  if gv_settings-lgort is initial.
+     gv_settings-lgort = '0001'.
+  endif.
+
+* Get Parameter ID for Controlling Area
+  get parameter id 'CAC' field gv_settings-kokrs.
+
+  if gv_settings-kokrs is initial.
+     gv_settings-kokrs = '1000'.
+  endif.
+
+* Get Parameter ID for Document Type
+  get parameter id 'BBA' field gv_settings-bbsrt.
+
+  if gv_settings-bbsrt is initial.
+     gv_settings-bbsrt = 'NB'.
+  endif.
+endmethod.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Public Method ZCL_NAD_MM_PR_CREATE_TMP->SAVE_CHANGE
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] SERVER                         TYPE REF TO /NEPTUNE/CL_NAD_SERVER
+* | [--->] IT_PR_ITEMS                    TYPE        TT_ITEM
+* | [--->] WA_PR_HEADER                   TYPE        TY_PR_HEADER
+* | [<-->] WA_MESSAGE                     TYPE        /NEPTUNE/MESSAGE
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+method save_change.
+  data: it_new_items   type standard table of bapiebanv,
+      it_old_items   type standard table of bapiebanv,
+      it_new_account type standard table of bapiebknv,
+      it_old_account type standard table of bapiebknv,
+      it_account_ass type standard table of bapiebkn,
+      it_items       type standard table of bapieban,
+      it_return      type standard table of bapireturn,
+      wa_new_account like line of it_new_account,
+      wa_old_account like line of it_old_account,
+      wa_new_items   like line of it_new_items,
+      wa_old_items   like line of it_old_items,
+      wa_account_ass like line of it_account_ass,
+      wa_pr_items    like line of it_pr_items,
+      wa_items       like line of it_items,
+      wa_return      like line of it_return,
+      lv_preq_id     type string,
+      lv_tabix       type sy-tabix,
+      lv_error       type i.
+
+
+* Any Items
+  check it_pr_items is not initial.
+
+* Get Current Data
+  call function 'BAPI_REQUISITION_GETDETAIL'
+    exporting
+      number                         = wa_pr_header-preq_no
+      account_assignment             = 'X'
+    tables
+      requisition_items              = it_items
+      requisition_account_assignment = it_account_ass
+      return                         = it_return.
+
+* Move to New Table
+  loop at it_pr_items into wa_pr_items where quantity ne 0.
+
+    move-corresponding wa_pr_items to wa_new_items.
+
+    wa_new_items-del_datcat = '1'.
+    append wa_new_items to it_new_items.
+
+    read table it_account_ass into wa_account_ass with key preq_item =
+wa_pr_items-preq_item.
+
+    if sy-subrc eq 0.
+
+      move-corresponding wa_account_ass to wa_new_account.
+      wa_new_account-cost_ctr = wa_pr_items-cost_ctr.
+      wa_new_account-order_no = wa_pr_items-order_no.
+
+      call function 'CONVERSION_EXIT_ALPHA_INPUT'
+        exporting
+          input  = wa_new_account-cost_ctr
+        importing
+          output = wa_new_account-cost_ctr.
+
+      call function 'CONVERSION_EXIT_ALPHA_INPUT'
+        exporting
+          input  = wa_new_account-order_no
+        importing
+          output = wa_new_account-order_no.
+
+      read table it_items into wa_items with key preq_item =
+wa_pr_items-preq_item.
+
+      append wa_new_account to it_new_account.
+      clear  wa_new_account.
+
+    endif.
+
+  endloop.
+
+* Move to Old Table
+  loop at it_items into wa_items.
+    move-corresponding wa_items to wa_old_items.
+    append wa_old_items to it_old_items.
+  endloop.
+
+* Accounting
+  loop at it_account_ass into wa_account_ass.
+    move-corresponding wa_account_ass to wa_old_account.
+    append wa_old_account to it_old_account.
+  endloop.
+
+* Update PR
+  call function 'BAPI_REQUISITION_CHANGE'
+    exporting
+      number                  = wa_pr_header-preq_no
+    tables
+      requisition_items_old   = it_old_items
+      requisition_items_new   = it_new_items
+      requisition_account_old = it_old_account
+      requisition_account_new = it_new_account
+      return                  = it_return.
+
+* Message Handling
+  delete it_return where type eq 'I'.
+  delete it_return where type eq 'S'.
+
+  loop at it_return into wa_return.
+    move-corresponding wa_return to wa_message.
+*    call method server->api_message_create
+*      exporting
+*        message = wa_message.
+  endloop.
+
+* Commit Change
+  call function 'BAPI_TRANSACTION_COMMIT'.
+  commit work and wait.
+
+  wait up to 1 seconds.
+endmethod.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Public Method ZCL_NAD_MM_PR_CREATE_TMP->SAVE_CREATE
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] SERVER                         TYPE REF TO /NEPTUNE/CL_NAD_SERVER
+* | [--->] IT_PR_ITEMS                    TYPE        TT_ITEM
+* | [<-->] WA_MESSAGE                     TYPE        /NEPTUNE/MESSAGE
+* | [<-->] WA_PR_HEADER                   TYPE        TY_PR_HEADER
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+method save_create.
+
+data: it_new_items   type standard table of bapiebanc,
+      it_account_ass type standard table of bapiebkn,
+      it_items       type standard table of bapieban,
+      it_return      type standard table of bapireturn,
+      wa_account_ass like line of it_account_ass,
+      wa_new_items   like line of it_new_items,
+      wa_items       like line of it_items,
+      wa_pr_items    like line of it_pr_items,
+      wa_return      like line of it_return,
+      lv_preq_id     type string,
+      lv_tabix       type sy-tabix,
+      lv_error       type i.
+
+* New Order ?
+  if wa_pr_header-preq_no cs '$'.
+     clear wa_pr_header-preq_no.
+  endif.
+
+* Move to New Table
+  loop at it_pr_items into wa_pr_items where quantity ne 0.
+
+    move-corresponding wa_pr_items to wa_new_items.
+    wa_new_items-preq_no   = wa_pr_header-preq_no.
+    wa_new_items-plant     = gv_settings-werks.
+    wa_new_items-store_loc = gv_settings-lgort.
+    wa_new_items-pur_group = gv_settings-ekgrp.
+    wa_new_items-purch_org = gv_settings-ekorg.
+    wa_new_items-doc_type  = wa_pr_header-doc_type.
+
+    if wa_pr_items-acctasscat is not initial.
+
+       wa_new_items-acctasscat  = wa_pr_items-acctasscat.
+       wa_account_ass-preq_item = wa_pr_items-preq_item.
+       wa_account_ass-cost_ctr  = wa_pr_items-cost_ctr.
+       wa_account_ass-order_no  = wa_pr_items-order_no.
+
+       call function 'CONVERSION_EXIT_ALPHA_INPUT'
+         exporting
+           input         = wa_account_ass-cost_ctr
+         importing
+           output        = wa_account_ass-cost_ctr.
+
+       call function 'CONVERSION_EXIT_ALPHA_INPUT'
+         exporting
+           input         = wa_account_ass-order_no
+         importing
+           output        = wa_account_ass-order_no.
+
+       append wa_account_ass to it_account_ass.
+       clear  wa_account_ass.
+
+    endif.
+
+    append wa_new_items to it_new_items.
+  endloop.
+
+* Create
+  call function 'BAPI_REQUISITION_CREATE'
+    importing
+      number                               = wa_pr_header-preq_no
+    tables
+      requisition_items                    = it_new_items
+      requisition_account_assignment       = it_account_ass
+      return                               = it_return.
+
+* Message Handling
+*  delete it_return where type eq 'I'.
+  delete it_return where type eq 'S'.
+
+  loop at it_return into wa_return.
+    move-corresponding wa_return to wa_message.
+*    call method server->api_message_create
+*      exporting
+*        message = wa_message.
+  endloop.
+
+* Commit Change
+  call function 'BAPI_TRANSACTION_COMMIT'.
+  commit work and wait.
+
+endmethod.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Public Method ZCL_NAD_MM_PR_CREATE_TMP->SAVE_TEXT
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] WA_PR_HEADER                   TYPE        TY_PR_HEADER
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+method save_text.
+
+data: it_text   type standard table of string,
+      it_tline  type standard table of tline,
+      wa_tline  like line of it_tline,
+      wa_text   like line of it_text,
+      lv_tdname type stxh-tdname,
+      lv_thead  type thead,
+      lv_date   type string,
+      lv_time   type string,
+      lv_user   type string.
+
+
+*---------------------------------------------------------------------*
+* COMMON
+*---------------------------------------------------------------------*
+  call function 'CONVERSION_EXIT_LDATE_OUTPUT'
+    exporting
+      input         = sy-datum
+    importing
+      output        = lv_date.
+
+  call function 'CONVERSION_EXIT_HH_MM_OUTPUT'
+    exporting
+      input         = sy-uzeit
+    importing
+      output        = lv_time.
+
+  concatenate '('
+             sy-uname
+             ')'
+             into lv_user.
+
+
+*---------------------------------------------------------------------*
+* HEADER
+*---------------------------------------------------------------------*
+  if wa_pr_header-text is not initial.
+
+*    Insert TimeStamp
+     concatenate lv_date
+                 lv_time
+                 lv_user
+                 into wa_text separated by space respecting blanks.
+
+     append wa_text to it_text.
+     clear  wa_text.
+
+     call function 'CONVERT_STRING_TO_TABLE'
+       exporting
+         i_string               = wa_pr_header-text
+         i_tabline_length       = 132
+       tables
+         et_table               = it_text.
+
+*   Blank Line
+    append wa_text to it_text.
+
+*   Text Header
+    lv_thead-tdid     = 'B01'.
+    lv_thead-tdobject = 'EBANH'.
+    lv_thead-tdspras  = sy-langu.
+    lv_thead-tdname   = wa_pr_header-preq_no.
+
+*   Get Old Text
+    clear it_tline.
+    call function 'READ_TEXT'
+      exporting
+        id                            = lv_thead-tdid
+        language                      = sy-langu
+        name                          = lv_thead-tdname
+        object                        = lv_thead-tdobject
+      tables
+        lines                         = it_tline
+      exceptions
+        id                            = 1
+        language                      = 2
+        name                          = 3
+        not_found                     = 4
+        object                        = 5
+        reference_check               = 6
+        wrong_access_to_archive       = 7
+        others                        = 8.
+
+    loop at it_text into wa_text.
+      wa_tline-tdformat = '*'.
+      wa_tline-tdline   = wa_text.
+      append wa_tline to it_tline.
+      clear  wa_tline.
+    endloop.
+
+*   Save Text
+    call function 'SAVE_TEXT'
+      exporting
+        header                = lv_thead
+        savemode_direct       = 'X'
+      tables
+        lines                 = it_tline
+      exceptions
+        id                    = 1
+        language              = 2
+        name                  = 3
+        object                = 4
+        others                = 5.
+
+
+  endif.
+
+* Commit
+  commit work and wait.
+
+endmethod.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Public Method ZCL_NAD_MM_PR_CREATE_TMP->ZIF_NAD_MM_PR_CREATE_TMP_GET~ADD
+* +-------------------------------------------------------------------------------------------------+
+* | [<---] WA_PR_HEADER                   TYPE        TY_PR_HEADER
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+method zif_nad_mm_pr_create_tmp_get~add.
+* Get USer Parameters
+  call method get_default_values( ).
+
+* Set Defaults
+  wa_pr_header-preq_no   = '$0'.
+  wa_pr_header-preq_date = sy-datum.
+  wa_pr_header-doc_type  = gv_settings-bbsrt.
+endmethod.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Public Method ZCL_NAD_MM_PR_CREATE_TMP->ZIF_NAD_MM_PR_CREATE_TMP_GET~GET_ATTACHMENT
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] SERVER                         TYPE REF TO /NEPTUNE/CL_NAD_SERVER(optional)
+* | [--->] KEY                            TYPE        STRING(optional)
+* | [--->] AJAX_VALUE                     TYPE        STRING(optional)
+* | [<---] WA_ATTACHMENT                  TYPE        TY_ATTACHMENT
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+method zif_nad_mm_pr_create_tmp_get~get_attachment.
+
+data: lv_doc_id     type sofolenti1-doc_id,
+      lv_docx       type xstring,
+      lv_doc        type string,
+      lv_length     type i,
+      lv_filename   type string,
+      it_txt        type standard table of solisti1,
+      wa_txt        type solisti1,
+      it_hex        type standard table of solix,
+      wa_hex        like line of it_hex,
+      wa_doc        type sofolenti1.
+
+
+* Get Document Key
+  if key is not initial.
+     split key at '|' into lv_doc_id
+                           lv_filename.
+  else.
+     split ajax_value at '|' into lv_doc_id
+                                  lv_filename.
+  endif.
+
+* Get Document
+  call function 'SO_DOCUMENT_READ_API1'
+    exporting
+      document_id                      = lv_doc_id
+    importing
+      document_data                    = wa_doc
+    tables
+      contents_hex                     = it_hex
+    exceptions
+      document_id_not_exist            = 1
+      operation_no_authorization       = 2
+      x_error                          = 3
+      others                           = 4.
+
+  describe table it_hex lines lv_length.
+  lv_length = lv_length * sy-tleng .
+
+  call function 'SCMS_BINARY_TO_XSTRING'
+    exporting
+      input_length       = lv_length
+    importing
+      buffer             = lv_docx
+    tables
+      binary_tab         = it_hex
+    exceptions
+      failed             = 1
+      others             = 2.
+
+
+* Set File Type
+  wa_attachment-file_ext = wa_doc-obj_type.
+
+* Update Mobile App Data
+  if ajax_value is not initial.
+     wa_attachment-data = lv_docx.
+     exit.
+  endif.
+
+* Set Document Response
+  case wa_doc-obj_type.
+
+    when 'PDF'.
+      call method server->api_response_xstring
+        exporting
+          data         = lv_docx
+          "file_name    = lv_filename
+          content_type = 'application/pdf'.
+
+    when 'DOC' or 'RTF'.
+      call method server->api_response_xstring
+        exporting
+          data         = lv_docx
+          file_name    = lv_filename
+          content_type = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'.
+
+    when 'XLS'.
+      call method server->api_response_xstring
+        exporting
+          data         = lv_docx
+          file_name    = lv_filename
+          content_type = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'.
+
+    when 'CRT'.  " TEST
+      call method server->api_response_xstring
+        exporting
+          data         = lv_docx
+          file_name    = lv_filename
+          content_type = 'application/x-x509-user-cert'.
+
+  endcase.
+
+endmethod.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Public Method ZCL_NAD_MM_PR_CREATE_TMP->ZIF_NAD_MM_PR_CREATE_TMP_GET~GET_DIMENSIONS
+* +-------------------------------------------------------------------------------------------------+
+* | [<---] IT_T006A                       TYPE        TT_T006A
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+method zif_nad_mm_pr_create_tmp_get~get_dimensions.
+* Get Data
+  select *
+         from t006a
+         into table it_t006a
+         where spras eq sy-langu.
+
+* Sorting
+  sort it_t006a by msehl.
+
+* Delete
+  delete it_t006a where msehl is initial.
+endmethod.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Public Method ZCL_NAD_MM_PR_CREATE_TMP->ZIF_NAD_MM_PR_CREATE_TMP_GET~GET_MAT_GROUP
+* +-------------------------------------------------------------------------------------------------+
+* | [<---] IT_T023T                       TYPE        TT_T023T
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+method zif_nad_mm_pr_create_tmp_get~get_mat_group.
+* Get Data
+  select *
+         from t023t
+         into table it_t023t
+         where spras eq sy-langu.
+
+* Sorting
+  sort it_t023t by wgbez.
+
+* Delete
+  delete it_t023t where wgbez is initial.
+endmethod.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Public Method ZCL_NAD_MM_PR_CREATE_TMP->ZIF_NAD_MM_PR_CREATE_TMP_GET~GET_PR_DETAIL
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] AJAX_VALUE                     TYPE        STRING
+* | [<---] WA_DETAIL                      TYPE        TY_ITEM
+* | [<---] IT_STRATEGY                    TYPE        TT_STRATEGY
+* | [<-->] IT_ATTACHMENT                  TYPE        TT_ATTACHMENT
+* | [<-->] IT_TEXT                        TYPE        TT_TEXT
+* | [<-->] IT_ACCOUNT                     TYPE        TT_ACCOUNT
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+method zif_nad_mm_pr_create_tmp_get~get_pr_detail.
+data: begin of lv_key,
+        foltp type so_fol_tp,
+        folyr type so_fol_yr,
+        folno type so_fol_no,
+        doctp type so_doc_tp,
+        docyr type so_doc_yr,
+        docno type so_doc_no,
+    end of lv_key.
+
+  data: it_return      type standard table of bapireturn,
+        it_items       type standard table of bapieban,
+        it_lines       type standard table of tline,
+        it_rel_post    type standard table of bapirlcorq,
+        it_rel_fina    type standard table of bapirlcorq,
+        it_account_ass type standard table of bapiebkn,
+        it_stxh        type standard table of stxh,
+        wa_rel_post    type bapirlcorq,
+        wa_rel_fina    type bapirlcorq,
+        wa_lines       like line of it_lines,
+        wa_account_ass like line of it_account_ass,
+        wa_attachment  like line of it_attachment,
+        wa_text        like line of it_text,
+        wa_account     like line of it_account,
+        wa_items       like line of it_items,
+        wa_sofc        type v_sofc,
+        wa_stxh        type stxh,
+        wa_eban        type eban,
+        wa_dd07t       type dd07t,
+        lv_tdname      type stxh-tdname,
+        lv_tabix       type sy-tabix,
+        lv_banfn       type eban-banfn,
+        lv_bnfpo       type eban-bnfpo,
+        wa_strategy    like line of it_strategy.
+
+
+*----------------------------------------------------------------------
+* GET DATA
+*----------------------------------------------------------------------
+  split ajax_value at ':' into lv_banfn
+                               lv_bnfpo.
+
+* Init
+  clear it_items.
+  clear wa_items.
+
+* Get PR Details
+  call function 'BAPI_REQUISITION_GETDETAIL'
+    exporting
+      number                         = lv_banfn
+      account_assignment             = 'X'
+    tables
+      requisition_items              = it_items
+      requisition_account_assignment = it_account_ass
+      return                         = it_return.
+
+
+*----------------------------------------------------------------------
+* BUILD DATA
+*----------------------------------------------------------------------
+
+* Daniel - Conversion exit alpha
+  call function 'CONVERSION_EXIT_ALPHA_INPUT'
+    exporting
+      input  = lv_bnfpo
+    importing
+      output = lv_bnfpo.
+
+
+* Get item data
+  read table it_items into wa_items with key preq_item = lv_bnfpo.
+
+  move-corresponding wa_items to wa_detail.
+
+* Get EBAN
+  select single *
+         from eban
+         into wa_eban
+         where banfn eq lv_banfn
+           and bnfpo eq lv_bnfpo.
+
+* Status
+  if wa_eban-banpr is not initial.
+
+    select single *
+           from dd07t
+           into wa_dd07t
+           where domname    eq 'BANPR'
+             and ddlanguage eq sy-langu
+             and domvalue_l eq wa_eban-banpr.
+
+    case wa_eban-banpr.
+
+      when '03'.
+        wa_detail-status_icon  = 'sap-icon://email'.
+        wa_detail-status_state = 'Warning'.
+        wa_detail-status = wa_dd07t-ddtext.
+
+      when '05'.
+        wa_detail-status_icon  = 'sap-icon://accept'.
+        wa_detail-status_state = 'Success'.
+        wa_detail-status = wa_dd07t-ddtext.
+
+      when '08'.
+        wa_detail-status_icon  = 'sap-icon://decline'.
+        wa_detail-status_state = 'Error'.
+        wa_detail-status = wa_dd07t-ddtext.
+
+      when others.
+        wa_detail-status_state = 'None'.
+
+
+    endcase.
+
+  endif.
+
+* Purchase Group
+  select single eknam
+         from t024
+         into wa_detail-pur_name
+         where ekgrp eq wa_detail-pur_group.
+
+* Plant
+  select single name1
+         from t001w
+         into wa_detail-plant_txt
+         where werks eq wa_detail-plant.
+
+* Price
+  wa_detail-netwr = ( wa_detail-quantity * wa_detail-c_amt_bapi ) /
+  wa_detail-price_unit.
+
+* Material Group
+  select single wgbez
+         from t023t
+         into wa_detail-mat_grp_txt
+         where spras eq sy-langu
+           and matkl eq wa_detail-mat_grp.
+
+
+*----------------------------------------------------------------------
+* ACCOUNT ASSIGNMENT
+*----------------------------------------------------------------------
+
+* Only Current Item
+  delete it_account_ass where preq_item ne lv_bnfpo.
+
+  loop at it_account_ass into wa_account_ass.
+
+*   Get Account Assignment Type Text
+    select single knttx
+           into wa_account-category
+           from t163i
+           where spras eq sy-langu
+             and knttp eq wa_items-acctasscat.
+
+    move-corresponding wa_account_ass to wa_account.
+
+*   Share
+    if wa_account_ass-distr_perc is initial.
+      wa_account-distr_perc = '100'.
+    endif.
+
+*   Cost Center
+    select single ltext
+           from cskt
+           into wa_account-cost_ctr_txt
+           where spras eq sy-langu
+             and kokrs eq wa_account_ass-co_area
+             and kostl eq wa_account_ass-cost_ctr
+             and datbi ge sy-datum.
+
+*   GL Account
+    select single txt50
+           from skat
+           into wa_account-g_l_acct_txt
+           where spras eq sy-langu
+             and ktopl eq 'GKR '
+             and saknr eq wa_account-g_l_acct.
+
+*   Internal order
+    select single ktext
+           from aufk
+           into wa_account-order_no_txt
+           where aufnr eq wa_account-order_no.
+
+    append wa_account to it_account.
+    clear  wa_account.
+
+  endloop.
+
+
+*----------------------------------------------------------------------
+* TEXT
+*----------------------------------------------------------------------
+
+* Get Text Header
+  select single *
+         from stxh
+         into wa_stxh
+         where tdobject eq 'EBANH'
+           and tdname	  eq lv_banfn
+           and tdspras  eq sy-langu.
+
+  if sy-subrc eq 0.
+
+*   Get Text Header
+    call function 'READ_TEXT'
+      exporting
+        id                      = wa_stxh-tdid
+        language                = wa_stxh-tdspras
+        name                    = wa_stxh-tdname
+        object                  = wa_stxh-tdobject
+      tables
+        lines                   = it_lines
+      exceptions
+        id                      = 1
+        language                = 2
+        name                    = 3
+        not_found               = 4
+        object                  = 5
+        reference_check         = 6
+        wrong_access_to_archive = 7
+        others                  = 8.
+
+
+    clear wa_text.
+    wa_text-textid     = wa_stxh-tdid.
+    wa_text-textid_txt = 'Header Text'.
+    wa_text-tdfdate    = wa_stxh-tdfdate.
+    loop at it_lines into wa_lines.
+
+      concatenate wa_text-text
+                  wa_lines-tdline
+                  cl_abap_char_utilities=>cr_lf
+                  into wa_text-text.
+
+    endloop.
+
+    append wa_text to it_text.
+    clear  wa_text.
+
+  endif.
+
+* Text Key
+  concatenate lv_banfn
+              lv_bnfpo
+              into lv_tdname.
+
+* Item Text
+  select *
+         from stxh
+         into table it_stxh
+         where tdobject eq 'EBAN'
+           and tdname   eq lv_tdname
+           and tdspras  eq sy-langu.
+
+  loop at it_stxh into wa_stxh.
+
+*   Get Item Header
+    call function 'READ_TEXT'
+      exporting
+        id                      = wa_stxh-tdid
+        language                = wa_stxh-tdspras
+        name                    = wa_stxh-tdname
+        object                  = wa_stxh-tdobject
+      tables
+        lines                   = it_lines
+      exceptions
+        id                      = 1
+        language                = 2
+        name                    = 3
+        not_found               = 4
+        object                  = 5
+        reference_check         = 6
+        wrong_access_to_archive = 7
+        others                  = 8.
+
+
+    clear wa_text.
+    wa_text-textid     = wa_stxh-tdid.
+    wa_text-textid_txt = 'Item Text'.
+    wa_text-tdfdate    = wa_stxh-tdfdate.
+    loop at it_lines into wa_lines.
+
+      concatenate wa_text-text
+                  wa_lines-tdline
+                  cl_abap_char_utilities=>cr_lf
+                  into wa_text-text.
+
+    endloop.
+
+    append wa_text to it_text.
+    clear  wa_text.
+
+  endloop.
+
+
+*----------------------------------------------------------------------
+* ATTACHMENTS
+*----------------------------------------------------------------------
+  select *
+         from srgbtbrel
+         into corresponding fields of table it_attachment
+         where instid_a eq lv_banfn
+           and typeid_a eq 'BUS2105'.
+
+  loop at it_attachment into wa_attachment.
+
+    lv_tabix = sy-tabix.
+    lv_key   = wa_attachment-instid_b.
+
+    select single *
+           from v_sofc
+           into wa_sofc
+           where foltp eq lv_key-foltp
+             and folyr eq lv_key-folyr
+             and folno eq lv_key-folno
+             and doctp eq lv_key-doctp
+             and docyr eq lv_key-docyr
+             and docno eq lv_key-docno.
+
+    move-corresponding wa_sofc to wa_attachment.
+    translate wa_attachment-file_ext to upper case.
+
+    modify it_attachment from wa_attachment index lv_tabix.
+
+  endloop.
+
+
+*----------------------------------------------------------------------
+* BUILD RELEASE STRATEGY
+*----------------------------------------------------------------------
+
+* Get Release Information
+  call function 'BAPI_REQUISITION_GETRELINFO'
+    exporting
+      number                 = lv_banfn
+      item                   = lv_bnfpo
+    tables
+      release_already_posted = it_rel_post
+      release_final          = it_rel_fina.
+
+  read table it_rel_fina into wa_rel_fina index 1.
+  read table it_rel_post into wa_rel_post index 1.
+
+
+* Code 1
+  wa_strategy-code = wa_rel_fina-rel_code1.
+  wa_strategy-desc = wa_rel_fina-rel_cd_tx1.
+
+  if wa_rel_post-rel_code1 is not initial.
+    wa_strategy-status = 'sap-icon://accept'.
+  endif.
+
+  append wa_strategy to it_strategy.
+  clear  wa_strategy.
+
+* Code 2
+  wa_strategy-code = wa_rel_fina-rel_code2.
+  wa_strategy-desc = wa_rel_fina-rel_cd_tx2.
+
+  if wa_rel_post-rel_code2 is not initial.
+    wa_strategy-status = 'sap-icon://accept'.
+  endif.
+
+  append wa_strategy to it_strategy.
+  clear  wa_strategy.
+
+* Code 3
+  wa_strategy-code = wa_rel_fina-rel_code3.
+  wa_strategy-desc = wa_rel_fina-rel_cd_tx3.
+
+  if wa_rel_post-rel_code3 is not initial.
+    wa_strategy-status = 'sap-icon://accept'.
+  endif.
+
+  append wa_strategy to it_strategy.
+  clear  wa_strategy.
+
+* Code 4
+  wa_strategy-code = wa_rel_fina-rel_code4.
+  wa_strategy-desc = wa_rel_fina-rel_cd_tx4.
+
+  if wa_rel_post-rel_code4 is not initial.
+    wa_strategy-status = 'sap-icon://accept'.
+  endif.
+
+  append wa_strategy to it_strategy.
+  clear  wa_strategy.
+
+* Delete empty
+  delete it_strategy where code is initial.
+endmethod.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Public Method ZCL_NAD_MM_PR_CREATE_TMP->ZIF_NAD_MM_PR_CREATE_TMP_GET~GET_PR_EDIT
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] AJAX_VALUE                     TYPE        STRING
+* | [--->] IT_ATTACHMENT                  TYPE        TT_ATTACHMENT
+* | [--->] IT_TEXT                        TYPE        TT_TEXT
+* | [--->] IT_ACCOUNT                     TYPE        TT_ACCOUNT
+* | [<---] WA_PR_HEADER                   TYPE        TY_PR_HEADER
+* | [<---] IT_PR_ITEMS                    TYPE        TT_PR_ITEMS
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+method zif_nad_mm_pr_create_tmp_get~get_pr_edit.
+data: begin of lv_key,
+      foltp type so_fol_tp,
+      folyr type so_fol_yr,
+      folno type so_fol_no,
+      doctp type so_doc_tp,
+      docyr type so_doc_yr,
+      docno type so_doc_no,
+  end of lv_key.
+
+data: it_return      type standard table of bapireturn,
+      it_items       type standard table of bapieban,
+      it_lines       type standard table of tline,
+      it_account_ass type standard table of bapiebkn,
+      it_stxh        type standard table of stxh,
+      wa_items       like line of it_items,
+      wa_pr_items    like line of it_pr_items,
+      wa_lines       like line of it_lines,
+      wa_account_ass like line of it_account_ass,
+      wa_attachment  like line of it_attachment,
+      wa_text        like line of it_text,
+      wa_account     like line of it_account,
+      wa_sofc        type v_sofc,
+      wa_stxh        type stxh,
+      lv_tdname      type stxh-tdname,
+      lv_tabix       type sy-tabix,
+      lv_banfn       type eban-banfn,
+      lv_bnfpo       type eban-bnfpo.
+
+
+*----------------------------------------------------------------------
+* GET DATA
+*----------------------------------------------------------------------
+  lv_banfn = ajax_value.
+  call function 'BAPI_REQUISITION_GETDETAIL'
+    exporting
+      number                               = lv_banfn
+      account_assignment                   = 'X'
+    tables
+      requisition_items                    = it_items
+      requisition_account_assignment       = it_account_ass
+      return                               = it_return.
+
+* Delete
+  delete it_items where delete_ind ne space.
+
+
+*----------------------------------------------------------------------
+* BUILD DATA
+*----------------------------------------------------------------------
+  loop at it_items into wa_items.
+
+    move-corresponding wa_items to wa_pr_items.
+
+*   Cost Center
+    read table it_account_ass into wa_account_ass with key preq_item = wa_items-preq_item.
+
+    if sy-subrc eq 0.
+
+       wa_pr_items-cost_ctr   = wa_account_ass-cost_ctr.
+       wa_pr_items-order_no   = wa_account_ass-order_no.
+
+*      Cost Center
+       select single ltext
+              from cskt
+              into wa_pr_items-cost_ctr_txt
+              where spras eq sy-langu
+                and kokrs eq wa_account_ass-co_area
+                and kostl eq wa_account_ass-cost_ctr
+                and datbi ge sy-datum.
+
+*      Internal Order
+       select single ktext
+              from aufk
+              into wa_pr_items-order_no_txt
+              where aufnr eq wa_account_ass-order_no.
+
+*      Material Group
+       select single wgbez
+              from t023t
+              into wa_pr_items-mat_grp_txt
+              where spras eq sy-langu
+                and matkl eq wa_items-mat_grp.
+
+    endif.
+
+    append wa_pr_items to it_pr_items.
+
+  endloop.
+
+* Header Data
+  move-corresponding wa_items to wa_pr_header.
+endmethod.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Public Method ZCL_NAD_MM_PR_CREATE_TMP->ZIF_NAD_MM_PR_CREATE_TMP_GET~GET_PR_LIST
+* +-------------------------------------------------------------------------------------------------+
+* | [<---] IT_PR_LIST                     TYPE        TT_PR_LIST
+* | [<---] IT_T161T                       TYPE        TT_T161T
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+method zif_nad_mm_pr_create_tmp_get~get_pr_list.
+data: it_dd07t    type standard table of dd07t,
+        it_t024     type standard table of t024,
+        wa_pr_list  like line of it_pr_list,
+        wa_dd07t    type dd07t,
+        wa_t024     like line of it_t024,
+        lv_netwr    type string,
+        lv_tabix    type sy-tabix,
+        lv_date     type sy-datum,
+        lv_werks    type eban-werks.
+
+
+* Get Data
+  select banfn bnfpo ernam ekgrp badat txz01 matnr menge meins preis peinh waers banpr
+         from eban
+         into corresponding fields of table it_pr_list
+    up to 200 rows
+    where loekz eq space.
+*         where ernam eq sy-uname
+*           and loekz eq space.
+
+* Get Purch. Group
+  select *
+         from t024
+         into table it_t024.
+
+* Get T161T
+  select *
+         from t161t
+         into table it_t161t
+         where spras eq sy-langu
+           and bstyp eq 'B'.
+
+
+* Get Status Text
+  select *
+         from dd07t
+         into table it_dd07t
+         where domname    eq 'BANPR'
+           and ddlanguage eq sy-langu.
+
+* Sorting
+  sort it_t024  by ekgrp.
+  sort it_dd07t by domvalue_l.
+
+* Build Data
+  loop at it_pr_list into wa_pr_list.
+
+    lv_tabix = sy-tabix.
+
+    read table it_t024 into wa_t024 with key ekgrp = wa_pr_list-ekgrp binary search.
+
+*   Price
+    wa_pr_list-netwr = ( wa_pr_list-menge * wa_pr_list-preis ) / wa_pr_list-peinh.
+
+*   Search
+    lv_netwr = wa_pr_list-netwr.
+
+    concatenate lv_netwr
+                wa_pr_list-banfn
+                wa_pr_list-txz01
+                wa_t024-eknam
+                into wa_pr_list-search.
+
+    condense wa_pr_list-search no-gaps.
+
+*   Status
+    if wa_pr_list-banpr is not initial.
+
+      read table it_dd07t into wa_dd07t with key domvalue_l = wa_pr_list-banpr binary search.
+
+      case wa_pr_list-banpr.
+
+        when '03'.
+          wa_pr_list-status_icon  = 'sap-icon://email'.
+          wa_pr_list-status_state = 'Warning'.
+          wa_pr_list-status = wa_dd07t-ddtext.
+
+        when '05'.
+          wa_pr_list-status_icon  = 'sap-icon://accept'.
+          wa_pr_list-status_state = 'Success'.
+          wa_pr_list-status = wa_dd07t-ddtext.
+
+        when '08'.
+          wa_pr_list-status_icon  = 'sap-icon://decline'.
+          wa_pr_list-status_state = 'Error'.
+          wa_pr_list-status = wa_dd07t-ddtext.
+
+        when others.
+          wa_pr_list-status_state = 'None'.
+
+
+      endcase.
+
+    endif.
+
+    wa_pr_list-eknam  = wa_t024-eknam.
+
+    modify it_pr_list from wa_pr_list index lv_tabix.
+
+  endloop.
+
+* Sorting
+  sort it_pr_list by badat descending.
+endmethod.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Public Method ZCL_NAD_MM_PR_CREATE_TMP->ZIF_NAD_MM_PR_CREATE_TMP_GET~SEARCH_ORDER
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] WA_ORDER                       TYPE        TY_ORDER
+* | [<---] IT_ORDER                       TYPE        TT_ORDER
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+method zif_nad_mm_pr_create_tmp_get~search_order.
+data: lv_aufnr type string,
+      lv_ktext type string.
+
+
+* Search String
+  concatenate '%'
+              wa_order-aufnr
+              '%'
+              into lv_aufnr.
+
+  concatenate '%'
+              wa_order-ktext
+              '%'
+              into lv_ktext.
+
+* Get Data
+  select *
+         from aufk
+         into corresponding fields of table it_order
+         where aufnr like lv_aufnr
+           and ktext like lv_ktext
+           and phas3 eq space
+           and loekz eq space.
+
+* Sorting
+  sort it_order by aufnr.
+endmethod.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Public Method ZCL_NAD_MM_PR_CREATE_TMP->ZIF_NAD_MM_PR_CREATE_TMP_POST~DELETE
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] SERVER                         TYPE REF TO /NEPTUNE/CL_NAD_SERVER
+* | [--->] WA_DETAIL                      TYPE        TY_ITEM
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+method zif_nad_mm_pr_create_tmp_post~delete.
+data: it_items   type standard table of bapieband,
+      it_return  type standard table of bapireturn,
+      wa_message type /neptune/message,
+      wa_return  like line of it_return,
+      wa_items   like line of it_items.
+
+* Set Item
+  wa_items-preq_item  = wa_detail-preq_item.
+  wa_items-delete_ind = 'X'.
+  append wa_items to it_items.
+
+* Delete
+  call function 'BAPI_REQUISITION_DELETE'
+    exporting
+      number                            = wa_detail-preq_no
+    tables
+      requisition_items_to_delete       = it_items
+      return                            = it_return.
+
+* Message Handling
+  delete it_return where type eq 'I'.
+  delete it_return where type eq 'S'.
+
+  loop at it_return into wa_return.
+    move-corresponding wa_return to wa_message.
+    call method server->api_message_create
+      exporting
+        message = wa_message.
+  endloop.
+
+* Commit Change
+  call function 'BAPI_TRANSACTION_COMMIT'.
+  commit work and wait.
+
+  wait up to 1 seconds.
+
+endmethod.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Public Method ZCL_NAD_MM_PR_CREATE_TMP->ZIF_NAD_MM_PR_CREATE_TMP_POST~SAVE
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] SERVER                         TYPE REF TO /NEPTUNE/CL_NAD_SERVER
+* | [--->] IT_PR_ITEMS                    TYPE        TT_ITEM
+* | [<-->] WA_PR_HEADER                   TYPE        TY_PR_HEADER
+* | [<-->] WA_MESSAGE                     TYPE        /NEPTUNE/MESSAGE
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+METHOD zif_nad_mm_pr_create_tmp_post~save.
+  DATA: wa_pr_items LIKE LINE OF it_pr_items.
+
+
+
+  READ TABLE it_pr_items INTO wa_pr_items INDEX 1.
+
+  IF wa_pr_items-preq_no CS '$' OR it_pr_items IS INITIAL.
+    CALL METHOD save_create(
+      EXPORTING
+        server       = server
+        it_pr_items  = it_pr_items
+      CHANGING
+        wa_pr_header = wa_pr_header
+        wa_message   = wa_message
+    ).
+  ELSE.
+    CALL METHOD save_change(
+                             EXPORTING
+                             server = server
+                             it_pr_items = it_pr_items
+                             wa_pr_header = wa_pr_header
+                             CHANGING
+                              wa_message = wa_message ).
+  ENDIF.
+
+* Save Text
+  CALL METHOD save_text( wa_pr_header = wa_pr_header ).
+ENDMETHOD.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Public Method ZCL_NAD_MM_PR_CREATE_TMP->ZIF_NAD_MM_PR_CREATE_TMP_POST~SEARCH_COSTCENTER
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] WA_COST_SEARCH                 TYPE        TY_COST
+* | [<---] IT_CSKT                        TYPE        TT_CSKT
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+method zif_nad_mm_pr_create_tmp_post~search_costcenter.
+data: lv_kostl type string,
+      lv_mctxt type string.
+
+
+call method get_default_values( ).
+
+* Search String
+  concatenate '%'
+              wa_cost_search-kostl
+              '%'
+              into lv_kostl.
+
+  concatenate '%'
+              wa_cost_search-mctxt
+              '%'
+              into lv_mctxt.
+
+  translate lv_mctxt to upper case.
+
+* Get Data
+  select *
+         from cskt
+         into table it_cskt
+         where spras eq sy-langu
+           and kokrs eq gv_settings-kokrs
+           and kostl like lv_kostl
+           and datbi ge sy-datum
+           and mctxt like lv_mctxt.
+
+* Sorting
+  sort it_cskt by kostl.
+endmethod.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Public Method ZCL_NAD_MM_PR_CREATE_TMP->ZIF_NAD_MM_PR_CREATE_TMP_POST~SEARCH_MATERIAL
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] WA_MAT_SEARCH                  TYPE        TY_MATERIAL
+* | [<---] IT_MATERIAL                    TYPE        TT_MATERIAL
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+method zif_nad_mm_pr_create_tmp_post~search_material.
+  types: begin of ty_mbew,
+            matnr type matnr,
+            lbkum type lbkum,
+            verpr type verpr,
+            peinh type peinh,
+      end of ty_mbew.
+
+  types: begin of ty_eina,
+          matnr type matnr,
+    end of ty_eina.
+
+  types: begin of ty_mara,
+          matnr type matnr,
+          meins type meins,
+          matkl type matkl,
+    end of ty_mara.
+
+  data: it_makt     type standard table of makt,
+        it_mbew     type standard table of ty_mbew,
+        it_mara     type standard table of ty_mara,
+        it_eina     type standard table of ty_eina,
+        wa_eina     like line of it_eina,
+        lv_matnr    type string,
+        lv_maktx    type string,
+        wa_t001     type t001,
+        wa_t001k    type t001k,
+        wa_material like line of it_material,
+        wa_makt     type makt,
+        wa_mara     type ty_mara,
+        wa_mbew     type ty_mbew.
+
+  call method get_default_values( ).
+
+* Format input
+  concatenate '%'
+              wa_mat_search-matnr
+              '%'
+              into lv_matnr.
+
+  concatenate '%'
+              wa_mat_search-maktx
+              '%'
+              into lv_maktx.
+
+  translate lv_matnr to upper case.
+  translate lv_maktx to upper case.
+
+* ADD Daniel
+  data: lv_sql_query type string,
+        lt_conditions type table of string,
+        lv_condition  type string.
+
+  if lv_matnr = '%%' and lv_maktx = '%%'.
+
+* Get MAKT
+    select *
+           from makt
+           into table it_makt
+*           up to 500 rows
+           where matnr like lv_matnr
+             and spras eq sy-langu
+             and maktg like lv_maktx.
+  else.
+* Get MAKT
+    select *
+           from makt
+           into table it_makt
+           where matnr like lv_matnr
+             and spras eq sy-langu
+             and maktg like lv_maktx.
+  endif.
+  check sy-subrc eq 0.
+
+* Get MARD
+  select matnr lbkum verpr peinh
+         from mbew
+         into table it_mbew
+         for all entries in it_makt
+         where matnr eq it_makt-matnr
+           and bwkey eq gv_settings-werks
+           and bwtar eq space
+           and lvorm eq space.
+
+* Get MARA
+  select matnr meins matkl
+         from mara
+         into table it_mara
+         for all entries in it_makt
+         where matnr eq it_makt-matnr.
+
+* Get EINA
+  select matnr
+         from eina
+         into table it_eina
+         for all entries in it_mara
+         where matnr eq it_mara-matnr.
+
+* Get Plant-Company Code
+  select single *
+         from t001k
+         into wa_t001k
+         where bwkey eq gv_settings-werks.
+
+* Get Currency
+  select single *
+         from t001
+         into wa_t001
+         where bukrs eq wa_t001k-bukrs.
+
+* Sorting
+  sort it_mbew by matnr.
+  sort it_eina by matnr.
+
+* Build Material List
+  loop at it_makt into wa_makt.
+
+    read table it_mbew into wa_mbew with key matnr = wa_makt-matnr
+binary search.
+
+    check sy-subrc eq 0.
+
+    read table it_eina into wa_eina with key matnr = wa_makt-matnr
+binary search.
+
+    check sy-subrc eq 0.
+
+    read table it_mara into wa_mara with key matnr = wa_makt-matnr.
+
+    wa_material-matnr = wa_makt-matnr.
+    wa_material-maktx = wa_makt-maktx.
+    wa_material-labst = wa_mbew-lbkum.
+    wa_material-meins = wa_mara-meins.
+    wa_material-matkl = wa_mara-matkl.
+    wa_material-netpr = wa_mbew-verpr.
+    wa_material-waers = wa_t001-waers.
+    wa_material-eindt = sy-datum + 1.
+    append wa_material to it_material.
+    clear  wa_material.
+
+  endloop.
+endmethod.
+ENDCLASS.

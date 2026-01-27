@@ -1,0 +1,166 @@
+interface ZIF_NAD_MM_PR_CREATE_TMP_POST
+  public .
+
+
+  interfaces /NEPTUNE/IF_DR_OPERATION .
+  interfaces /NEPTUNE/IF_DR_OPER_POST .
+
+  types:
+    BEGIN OF ty_cost,
+      kostl TYPE cskt-kostl,
+      mctxt TYPE cskt-mctxt,
+    END OF ty_cost .
+  types:
+    tt_cskt TYPE STANDARD TABLE OF cskt WITH NON-UNIQUE DEFAULT KEY .
+  types:
+    BEGIN OF ty_material,
+      matnr	TYPE matnr,
+      maktx	TYPE maktx,
+      matkl	TYPE matkl,
+      meins	TYPE meins,
+      labst	TYPE labst,
+      vrkme	TYPE vrkme,
+      netpr	TYPE netpr,
+      waers TYPE waers,
+      eindt TYPE eindt,
+    END OF ty_material .
+  types:
+    tt_material TYPE STANDARD TABLE OF ty_material WITH NON-UNIQUE DEFAULT KEY .
+  types:
+    BEGIN OF ty_settings,
+      werks	TYPE werks_d,
+      ekorg TYPE ekorg,
+      ekgrp	TYPE ekgrp,
+      badat	TYPE badat,
+      lgort	TYPE lgort_d,
+      bbsrt	TYPE bbsrt,
+      kokrs TYPE kokrs,
+    END OF ty_settings .
+  types:
+    BEGIN OF ty_attachment,
+      banfn    TYPE banfn,
+      instid_b TYPE sibfboriid,
+      crdat    TYPE so_dat_cr,
+      crtim    TYPE so_tim_cr,
+      docdes   TYPE so_obj_des,
+      file_ext TYPE file_ext,
+      data     TYPE string,
+    END OF ty_attachment .
+  types:
+    BEGIN OF ty_text,
+      textid     TYPE textid,
+      textid_txt TYPE string,
+      tdfdate    TYPE tdfdate,
+      text       TYPE string,
+    END OF ty_text .
+  types:
+    BEGIN OF ty_account,
+      category     TYPE string,
+      cost_ctr     TYPE kostl,
+      cost_ctr_txt TYPE string,
+      distr_perc   TYPE string,
+      g_l_acct     TYPE saknr,
+      g_l_acct_txt TYPE string,
+      order_no     TYPE string,
+      order_no_txt TYPE string,
+    END OF ty_account .
+  types:
+    BEGIN OF ty_pr_list,
+      selected     TYPE string,
+      banfn        TYPE banfn,
+      bnfpo        TYPE bnfpo,
+      ekgrp        TYPE ekgrp,
+      ernam        TYPE ernam,
+      badat        TYPE badat,
+      txz01        TYPE txz01,
+      matnr        TYPE matnr,
+      menge        TYPE bamng,
+      meins        TYPE meins,
+      status       TYPE string,
+      status_icon  TYPE string,
+      status_state TYPE string,
+      preis        TYPE bapre,
+      peinh        TYPE epein,
+      waers        TYPE waers,
+      netwr        TYPE bapre,
+      search       TYPE string,
+      eknam        TYPE eknam,
+      banpr        TYPE banpr,
+    END OF ty_pr_list .
+  types:
+    BEGIN OF ty_item,
+      preq_no	     TYPE	banfn,
+      preq_item	   TYPE bnfpo,
+      pur_group	   TYPE	ekgrp,
+      pur_name     TYPE eknam,
+      po_number    TYPE ebeln,
+      po_item      TYPE ebelp,
+      short_text   TYPE txz01,
+      material     TYPE matnr,
+      plant	       TYPE	ewerk,
+      plant_txt	   TYPE string,
+      quantity     TYPE bamng,
+      unit         TYPE bamei,
+      deliv_date   TYPE eindt,
+      currency     TYPE waers,
+      c_amt_bapi   TYPE baprebapi,
+      price_unit   TYPE epein,
+      mat_grp	     TYPE	matkl,
+      mat_grp_txt	 TYPE string,
+      netwr	       TYPE baprebapi,
+      preq_date	   TYPE badat,
+      cost_ctr     TYPE kostl,
+      cost_ctr_txt TYPE string,
+      status       TYPE string,
+      status_icon  TYPE string,
+      status_state TYPE string,
+      text         TYPE string,
+      acctasscat   TYPE string,
+      order_no     TYPE string,
+      order_no_txt TYPE string,
+    END OF ty_item .
+  types:
+    tt_item TYPE STANDARD TABLE OF ty_item WITH NON-UNIQUE DEFAULT KEY .
+  types:
+    BEGIN OF ty_strategy,
+      code   TYPE string,
+      desc   TYPE string,
+      proc   TYPE string,
+      status TYPE string,
+    END OF ty_strategy .
+  types:
+    BEGIN OF ty_pr_header,
+      preq_no   TYPE  banfn,
+      preq_date TYPE string,
+      doc_type  TYPE eban-bsart,
+      text      TYPE string,
+    END OF ty_pr_header .
+  types:
+    BEGIN OF ty_order,
+      aufnr TYPE aufk-aufnr,
+      auart TYPE aufk-auart,
+      ktext TYPE aufk-ktext,
+    END OF ty_order .
+
+  methods DELETE
+    importing
+      !SERVER type ref to /NEPTUNE/CL_NAD_SERVER
+      !WA_DETAIL type TY_ITEM .
+  methods SAVE
+    importing
+      !SERVER type ref to /NEPTUNE/CL_NAD_SERVER
+      !IT_PR_ITEMS type TT_ITEM
+    changing
+      !WA_PR_HEADER type TY_PR_HEADER
+      !WA_MESSAGE type /NEPTUNE/MESSAGE .
+  methods SEARCH_COSTCENTER
+    importing
+      !WA_COST_SEARCH type TY_COST
+    exporting
+      !IT_CSKT type TT_CSKT .
+  methods SEARCH_MATERIAL
+    importing
+      !WA_MAT_SEARCH type TY_MATERIAL
+    exporting
+      !IT_MATERIAL type TT_MATERIAL .
+endinterface.
