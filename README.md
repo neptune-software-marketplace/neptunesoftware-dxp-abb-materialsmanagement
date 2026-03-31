@@ -41,12 +41,12 @@ While the Neptune DXP - SAP Edition and Open Edition cater to different user env
 Users can import the Materials Management bundle into DXP versions earlier than DXP 24; however, these versions are _**NOT**_ supported for maintenance or ongoing updates if any issues occur with the bundle artifacts.
 
 ### Neptune DXP SAP Edition Version
-Recommended Version: _**Neptune DXP - SAP Edition 24.10.0000**_
-Released: Q4/2024
+Recommended Version: _**Neptune DXP - SAP Edition 24.14.0000**_
+Released: Q4/2025
 
 ### Neptune DXP Open Edition Version
-Recommended Version: _**Neptune DXP - Open Edition 24.10.0**_
-Released: Q4/2023
+Recommended Version: _**Neptune DXP - Open Edition 24.14.0**_
+Released: Q4/2025
 
 ## Recommended Naming Conventions & Namespaces
 To ensure a streamlined and consistent import process for the provided source files that implement the exposure of ABAP-based business logic in the SAP backend system, it is recommended to retain the naming conventions and namespaces as defined in the delivered artifacts.
