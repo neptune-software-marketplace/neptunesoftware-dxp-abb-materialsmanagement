@@ -9,7 +9,6 @@
 			"fieldParent": 0,
 			"fieldType": "sap.m.SplitApp",
 			"script": "",
-			"customComponent": false,
 			"request": [],
 			"response": [],
 			"attributes": [
@@ -28,7 +27,6 @@
 					"fieldParent": "cf8f53e3-3899-4dfa-f485-4f312f80af19",
 					"fieldType": "sap.m.Page",
 					"script": "",
-					"customComponent": false,
 					"request": [],
 					"response": [],
 					"attributes": [
@@ -54,7 +52,6 @@
 							"fieldParent": "4c20c5e6-d420-4f76-b4f7-0cf88e9a19d9",
 							"fieldType": "sap.m.Bar",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -73,7 +70,6 @@
 									"fieldParent": "a47a10dd-53bc-469e-e4d3-d7c98305fc23",
 									"fieldType": "neptune.BarContent",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -92,7 +88,6 @@
 											"fieldParent": "15cff39f-aef3-439c-c87a-222c325ad48d",
 											"fieldType": "sap.m.Button",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -121,7 +116,6 @@
 									"fieldParent": "a47a10dd-53bc-469e-e4d3-d7c98305fc23",
 									"fieldType": "neptune.BarContent",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -140,7 +134,6 @@
 											"fieldParent": "0db13fbd-86df-4626-9b69-d60685726794",
 											"fieldType": "sap.m.Label",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -164,7 +157,6 @@
 							"fieldParent": "4c20c5e6-d420-4f76-b4f7-0cf88e9a19d9",
 							"fieldType": "sap.m.Bar",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -183,7 +175,6 @@
 									"fieldParent": "66818792-1218-4327-9794-598abd31a535",
 									"fieldType": "neptune.BarContent",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -202,7 +193,6 @@
 											"fieldParent": "ab512edc-ac56-4995-c2f3-e45e1c758ab9",
 											"fieldType": "sap.m.SearchField",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -241,7 +231,6 @@
 							"fieldParent": "4c20c5e6-d420-4f76-b4f7-0cf88e9a19d9",
 							"fieldType": "sap.m.List",
 							"script": "",
-							"customComponent": false,
 							"bindingValue": "Generic Array",
 							"bindingType": "h",
 							"bindingSource": "P9",
@@ -306,7 +295,6 @@
 									"fieldParent": "faec5550-ff8f-48d3-f38e-bc251f5e1e07",
 									"fieldType": "sap.m.ObjectListItem",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -357,7 +345,8 @@
 											"attribute": "press",
 											"grouping": "Events",
 											"value": "Anonymous Function",
-											"script": "file://event/sap.m.ObjectListItem/MasterListItem/press.script",
+											"script": "file://event/sap.m.ObjectListItem/MasterListItem/press.js",
+											"language": "javascript",
 											"translation": []
 										},
 										{
@@ -382,7 +371,6 @@
 											"fieldParent": "27456596-44af-484b-c447-d11a60c5ab02",
 											"fieldType": "sap.m.ObjectAttribute",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -409,7 +397,6 @@
 											"fieldParent": "27456596-44af-484b-c447-d11a60c5ab02",
 											"fieldType": "sap.m.ObjectStatus",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -447,7 +434,6 @@
 							"fieldParent": "4c20c5e6-d420-4f76-b4f7-0cf88e9a19d9",
 							"fieldType": "sap.m.Bar",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -466,7 +452,6 @@
 									"fieldParent": "fcc6dde7-6750-4287-b655-511b14e520a3",
 									"fieldType": "neptune.BarContent",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -485,7 +470,6 @@
 											"fieldParent": "d15f33c8-86b9-4e6e-bcfb-a20dfd97e4bc",
 											"fieldType": "sap.m.Button",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -500,7 +484,8 @@
 													"attribute": "press",
 													"grouping": "Events",
 													"value": "Anonymous Function",
-													"script": "file://event/sap.m.Button/butRefresh/press.script",
+													"script": "file://event/sap.m.Button/butRefresh/press.js",
+													"language": "javascript",
 													"translation": []
 												}
 											],
@@ -514,7 +499,6 @@
 									"fieldParent": "fcc6dde7-6750-4287-b655-511b14e520a3",
 									"fieldType": "neptune.BarContent",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -533,7 +517,6 @@
 											"fieldParent": "a706852f-2c94-4d31-9edd-ca8cbe6d2f4a",
 											"fieldType": "sap.m.Button",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -574,7 +557,6 @@
 					"fieldParent": "cf8f53e3-3899-4dfa-f485-4f312f80af19",
 					"fieldType": "sap.m.Page",
 					"script": "",
-					"customComponent": false,
 					"request": [],
 					"response": [],
 					"attributes": [
@@ -593,7 +575,6 @@
 							"fieldParent": "1aaa730d-3773-459b-fde1-6c5ad885a95a",
 							"fieldType": "sap.m.Bar",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -612,7 +593,6 @@
 									"fieldParent": "3ac3b00f-6872-4ef4-bc4b-64eeb952a891",
 									"fieldType": "neptune.BarContent",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -631,7 +611,6 @@
 											"fieldParent": "14b93eb1-b02f-402c-aaeb-0174339057c6",
 											"fieldType": "sap.m.Button",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -667,7 +646,6 @@
 									"fieldParent": "3ac3b00f-6872-4ef4-bc4b-64eeb952a891",
 									"fieldType": "neptune.BarContent",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -686,7 +664,6 @@
 											"fieldParent": "c90dc2dd-dace-4b7d-f333-7ce49532308d",
 											"fieldType": "sap.m.Label",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -710,7 +687,6 @@
 							"fieldParent": "1aaa730d-3773-459b-fde1-6c5ad885a95a",
 							"fieldType": "sap.m.MessagePage",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -751,7 +727,6 @@
 							"fieldParent": "1aaa730d-3773-459b-fde1-6c5ad885a95a",
 							"fieldType": "sap.m.Bar",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -773,7 +748,6 @@
 					"fieldParent": "cf8f53e3-3899-4dfa-f485-4f312f80af19",
 					"fieldType": "sap.m.Page",
 					"script": "",
-					"customComponent": false,
 					"bindingValue": "Generic Object",
 					"bindingType": "u",
 					"bindingSource": "P9",
@@ -802,7 +776,6 @@
 							"fieldParent": "2039369a-0bda-4bfb-ab1a-756dd5200c5a",
 							"fieldType": "sap.m.Bar",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -821,7 +794,6 @@
 									"fieldParent": "a1551b44-a4c1-42cb-b74c-d5ab797c7ffb",
 									"fieldType": "neptune.BarContent",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -840,7 +812,6 @@
 											"fieldParent": "ee1cb779-8333-47f0-bfcc-20e9ee3faf26",
 											"fieldType": "sap.m.Button",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -876,7 +847,6 @@
 									"fieldParent": "a1551b44-a4c1-42cb-b74c-d5ab797c7ffb",
 									"fieldType": "neptune.BarContent",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -895,7 +865,6 @@
 											"fieldParent": "1764e4d0-5208-4374-8279-6b6f4b6eb50f",
 											"fieldType": "sap.m.Label",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -919,7 +888,6 @@
 							"fieldParent": "2039369a-0bda-4bfb-ab1a-756dd5200c5a",
 							"fieldType": "sap.m.ObjectHeader",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -959,7 +927,6 @@
 									"fieldParent": "b6d16803-bc44-43b0-cc79-052829b71c5b",
 									"fieldType": "sap.m.ObjectAttribute",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -979,7 +946,6 @@
 									"fieldParent": "b6d16803-bc44-43b0-cc79-052829b71c5b",
 									"fieldType": "sap.m.ObjectStatus",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -1013,7 +979,6 @@
 									"fieldParent": "b6d16803-bc44-43b0-cc79-052829b71c5b",
 									"fieldType": "sap.m.ObjectStatus",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -1049,7 +1014,6 @@
 							"fieldParent": "2039369a-0bda-4bfb-ab1a-756dd5200c5a",
 							"fieldType": "sap.m.IconTabBar",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -1068,7 +1032,6 @@
 									"fieldParent": "a3e04f6c-0228-483c-ac3c-bf6704a67c9c",
 									"fieldType": "sap.m.IconTabFilter",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -1087,7 +1050,6 @@
 											"fieldParent": "8c2909b9-9ad5-46cd-f8ae-abe1959fad23",
 											"fieldType": "sap.m.Panel",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -1120,7 +1082,6 @@
 													"fieldParent": "06be5318-19ff-4c04-80c4-1f457412dea4",
 													"fieldType": "sap.ui.layout.form.SimpleForm",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -1160,7 +1121,6 @@
 															"fieldParent": "cda77bbc-88a8-4edf-e937-90b6335f867e",
 															"fieldType": "sap.m.Label",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1180,7 +1140,6 @@
 															"fieldParent": "cda77bbc-88a8-4edf-e937-90b6335f867e",
 															"fieldType": "sap.m.Text",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1207,7 +1166,6 @@
 															"fieldParent": "cda77bbc-88a8-4edf-e937-90b6335f867e",
 															"fieldType": "sap.m.Label",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1227,7 +1185,6 @@
 															"fieldParent": "cda77bbc-88a8-4edf-e937-90b6335f867e",
 															"fieldType": "sap.m.Text",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1247,7 +1204,6 @@
 															"fieldParent": "cda77bbc-88a8-4edf-e937-90b6335f867e",
 															"fieldType": "sap.m.Label",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1267,7 +1223,6 @@
 															"fieldParent": "cda77bbc-88a8-4edf-e937-90b6335f867e",
 															"fieldType": "sap.m.Text",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1287,7 +1242,6 @@
 															"fieldParent": "cda77bbc-88a8-4edf-e937-90b6335f867e",
 															"fieldType": "sap.m.Label",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1307,7 +1261,6 @@
 															"fieldParent": "cda77bbc-88a8-4edf-e937-90b6335f867e",
 															"fieldType": "sap.m.Text",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1327,7 +1280,6 @@
 															"fieldParent": "cda77bbc-88a8-4edf-e937-90b6335f867e",
 															"fieldType": "sap.m.Label",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1347,7 +1299,6 @@
 															"fieldParent": "cda77bbc-88a8-4edf-e937-90b6335f867e",
 															"fieldType": "sap.m.Text",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1367,7 +1318,6 @@
 															"fieldParent": "cda77bbc-88a8-4edf-e937-90b6335f867e",
 															"fieldType": "sap.m.Label",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1387,7 +1337,6 @@
 															"fieldParent": "cda77bbc-88a8-4edf-e937-90b6335f867e",
 															"fieldType": "sap.m.Text",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1407,7 +1356,6 @@
 															"fieldParent": "cda77bbc-88a8-4edf-e937-90b6335f867e",
 															"fieldType": "sap.m.Label",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1427,7 +1375,6 @@
 															"fieldParent": "cda77bbc-88a8-4edf-e937-90b6335f867e",
 															"fieldType": "sap.m.Text",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1447,7 +1394,6 @@
 															"fieldParent": "cda77bbc-88a8-4edf-e937-90b6335f867e",
 															"fieldType": "sap.m.Label",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1467,7 +1413,6 @@
 															"fieldParent": "cda77bbc-88a8-4edf-e937-90b6335f867e",
 															"fieldType": "sap.m.Text",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1487,7 +1432,6 @@
 															"fieldParent": "cda77bbc-88a8-4edf-e937-90b6335f867e",
 															"fieldType": "sap.m.Label",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1507,7 +1451,6 @@
 															"fieldParent": "cda77bbc-88a8-4edf-e937-90b6335f867e",
 															"fieldType": "sap.m.Text",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1531,7 +1474,6 @@
 											"fieldParent": "8c2909b9-9ad5-46cd-f8ae-abe1959fad23",
 											"fieldType": "sap.m.Panel",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -1571,7 +1513,6 @@
 													"fieldParent": "c32aec0d-bed7-413d-fadc-ad776a5c18fc",
 													"fieldType": "sap.ui.layout.form.SimpleForm",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -1611,7 +1552,6 @@
 															"fieldParent": "ba5d344d-0c46-437b-9243-f99e86256172",
 															"fieldType": "sap.m.Label",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1631,7 +1571,6 @@
 															"fieldParent": "ba5d344d-0c46-437b-9243-f99e86256172",
 															"fieldType": "sap.m.Text",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1658,7 +1597,6 @@
 															"fieldParent": "ba5d344d-0c46-437b-9243-f99e86256172",
 															"fieldType": "sap.m.Label",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1678,7 +1616,6 @@
 															"fieldParent": "ba5d344d-0c46-437b-9243-f99e86256172",
 															"fieldType": "sap.m.Text",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1702,7 +1639,6 @@
 											"fieldParent": "8c2909b9-9ad5-46cd-f8ae-abe1959fad23",
 											"fieldType": "sap.m.Panel",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -1728,7 +1664,6 @@
 													"fieldParent": "d322d17b-68fb-4762-9e30-a39241161f33",
 													"fieldType": "sap.m.Table",
 													"script": "",
-													"customComponent": false,
 													"bindingValue": "Generic Array",
 													"bindingType": "h",
 													"bindingSource": "P9",
@@ -1750,7 +1685,6 @@
 															"fieldParent": "bc69d374-1122-44ed-837d-36613ec16f21",
 															"fieldType": "sap.m.Column",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1770,7 +1704,6 @@
 															"fieldParent": "bc69d374-1122-44ed-837d-36613ec16f21",
 															"fieldType": "sap.m.Column",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [],
@@ -1782,7 +1715,6 @@
 															"fieldParent": "bc69d374-1122-44ed-837d-36613ec16f21",
 															"fieldType": "sap.m.Column",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1802,7 +1734,6 @@
 															"fieldParent": "bc69d374-1122-44ed-837d-36613ec16f21",
 															"fieldType": "sap.m.ColumnListItem",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [],
@@ -1813,7 +1744,6 @@
 																	"fieldParent": "7b202cec-40f3-4d33-b25d-fc7427abf50c",
 																	"fieldType": "sap.m.Text",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -1833,7 +1763,6 @@
 																	"fieldParent": "7b202cec-40f3-4d33-b25d-fc7427abf50c",
 																	"fieldType": "sap.m.Text",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -1853,7 +1782,6 @@
 																	"fieldParent": "7b202cec-40f3-4d33-b25d-fc7427abf50c",
 																	"fieldType": "sap.ui.core.Icon",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -1886,7 +1814,6 @@
 											"fieldParent": "8c2909b9-9ad5-46cd-f8ae-abe1959fad23",
 											"fieldType": "sap.m.Panel",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -1926,7 +1853,6 @@
 													"fieldParent": "13922b30-3d4d-4bed-c2df-90fffc4ffca8",
 													"fieldType": "sap.m.Table",
 													"script": "",
-													"customComponent": false,
 													"bindingValue": "Generic Array",
 													"bindingType": "h",
 													"bindingSource": "P9",
@@ -1948,7 +1874,6 @@
 															"fieldParent": "b02f5465-ede3-411c-ae62-42a549ebf2ae",
 															"fieldType": "sap.m.Column",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1968,7 +1893,6 @@
 															"fieldParent": "b02f5465-ede3-411c-ae62-42a549ebf2ae",
 															"fieldType": "sap.m.Column",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -1995,7 +1919,6 @@
 															"fieldParent": "b02f5465-ede3-411c-ae62-42a549ebf2ae",
 															"fieldType": "sap.m.Column",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -2022,7 +1945,6 @@
 															"fieldParent": "b02f5465-ede3-411c-ae62-42a549ebf2ae",
 															"fieldType": "sap.m.Column",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -2049,7 +1971,6 @@
 															"fieldParent": "b02f5465-ede3-411c-ae62-42a549ebf2ae",
 															"fieldType": "sap.m.Column",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -2069,7 +1990,6 @@
 															"fieldParent": "b02f5465-ede3-411c-ae62-42a549ebf2ae",
 															"fieldType": "sap.m.ColumnListItem",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [],
@@ -2080,7 +2000,6 @@
 																	"fieldParent": "11e3f505-d4fe-4d25-d1c9-0c0edbf73afa",
 																	"fieldType": "sap.m.ObjectNumber",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -2100,7 +2019,6 @@
 																	"fieldParent": "11e3f505-d4fe-4d25-d1c9-0c0edbf73afa",
 																	"fieldType": "sap.m.VBox",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [],
@@ -2111,7 +2029,6 @@
 																			"fieldParent": "9b26e094-035f-4b70-fab7-97ccfea44212",
 																			"fieldType": "sap.m.Text",
 																			"script": "",
-																			"customComponent": false,
 																			"request": [],
 																			"response": [],
 																			"attributes": [
@@ -2131,7 +2048,6 @@
 																			"fieldParent": "9b26e094-035f-4b70-fab7-97ccfea44212",
 																			"fieldType": "sap.m.Text",
 																			"script": "",
-																			"customComponent": false,
 																			"request": [],
 																			"response": [],
 																			"attributes": [
@@ -2153,7 +2069,6 @@
 																	"fieldParent": "11e3f505-d4fe-4d25-d1c9-0c0edbf73afa",
 																	"fieldType": "sap.m.VBox",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [],
@@ -2164,7 +2079,6 @@
 																			"fieldParent": "0e31af88-e22d-46a3-c6b1-55a40ec8ee1a",
 																			"fieldType": "sap.m.Text",
 																			"script": "",
-																			"customComponent": false,
 																			"request": [],
 																			"response": [],
 																			"attributes": [
@@ -2184,7 +2098,6 @@
 																			"fieldParent": "0e31af88-e22d-46a3-c6b1-55a40ec8ee1a",
 																			"fieldType": "sap.m.Text",
 																			"script": "",
-																			"customComponent": false,
 																			"request": [],
 																			"response": [],
 																			"attributes": [
@@ -2206,7 +2119,6 @@
 																	"fieldParent": "11e3f505-d4fe-4d25-d1c9-0c0edbf73afa",
 																	"fieldType": "sap.m.VBox",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [],
@@ -2217,7 +2129,6 @@
 																			"fieldParent": "671f64ea-d2ab-4625-f1c9-ab1ce06f2d08",
 																			"fieldType": "sap.m.Text",
 																			"script": "",
-																			"customComponent": false,
 																			"request": [],
 																			"response": [],
 																			"attributes": [
@@ -2237,7 +2148,6 @@
 																			"fieldParent": "671f64ea-d2ab-4625-f1c9-ab1ce06f2d08",
 																			"fieldType": "sap.m.Text",
 																			"script": "",
-																			"customComponent": false,
 																			"request": [],
 																			"response": [],
 																			"attributes": [
@@ -2259,7 +2169,6 @@
 																	"fieldParent": "11e3f505-d4fe-4d25-d1c9-0c0edbf73afa",
 																	"fieldType": "sap.m.ObjectNumber",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -2294,7 +2203,6 @@
 									"fieldParent": "a3e04f6c-0228-483c-ac3c-bf6704a67c9c",
 									"fieldType": "sap.m.IconTabFilter",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -2313,7 +2221,6 @@
 											"fieldParent": "7e3c9397-a7b8-44a3-ee01-18efb2af65b0",
 											"fieldType": "sap.m.List",
 											"script": "",
-											"customComponent": false,
 											"bindingValue": "Generic Array",
 											"bindingType": "h",
 											"bindingSource": "P9",
@@ -2342,7 +2249,6 @@
 													"fieldParent": "d486ae45-1123-487f-93c8-d5c9527c6571",
 													"fieldType": "sap.m.FeedListItem",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -2380,7 +2286,6 @@
 									"fieldParent": "a3e04f6c-0228-483c-ac3c-bf6704a67c9c",
 									"fieldType": "sap.m.IconTabFilter",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -2399,7 +2304,6 @@
 											"fieldParent": "a21e1eab-5aad-4ffc-8e74-f76a08d53d13",
 											"fieldType": "sap.m.Table",
 											"script": "",
-											"customComponent": false,
 											"bindingValue": "Generic Array",
 											"bindingType": "h",
 											"bindingSource": "P9",
@@ -2421,7 +2325,6 @@
 													"fieldParent": "d634d4a8-6790-4700-c321-564eefbebe82",
 													"fieldType": "sap.m.Column",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -2448,7 +2351,6 @@
 													"fieldParent": "d634d4a8-6790-4700-c321-564eefbebe82",
 													"fieldType": "sap.m.Column",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -2468,7 +2370,6 @@
 													"fieldParent": "d634d4a8-6790-4700-c321-564eefbebe82",
 													"fieldType": "sap.m.Column",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -2488,7 +2389,6 @@
 													"fieldParent": "d634d4a8-6790-4700-c321-564eefbebe82",
 													"fieldType": "sap.m.Column",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -2508,7 +2408,6 @@
 													"fieldParent": "d634d4a8-6790-4700-c321-564eefbebe82",
 													"fieldType": "sap.m.ColumnListItem",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -2535,7 +2434,6 @@
 															"fieldParent": "00076158-ddbd-4fc4-f4b5-c13e83e276c7",
 															"fieldType": "sap.m.Text",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -2555,7 +2453,6 @@
 															"fieldParent": "00076158-ddbd-4fc4-f4b5-c13e83e276c7",
 															"fieldType": "sap.m.Text",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -2575,7 +2472,6 @@
 															"fieldParent": "00076158-ddbd-4fc4-f4b5-c13e83e276c7",
 															"fieldType": "sap.m.Text",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -2595,7 +2491,6 @@
 															"fieldParent": "00076158-ddbd-4fc4-f4b5-c13e83e276c7",
 															"fieldType": "sap.m.Text",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -2623,7 +2518,6 @@
 							"fieldParent": "2039369a-0bda-4bfb-ab1a-756dd5200c5a",
 							"fieldType": "sap.m.Bar",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -2642,7 +2536,6 @@
 									"fieldParent": "23b2a06e-fbd0-4022-89d0-a1d18d0341d7",
 									"fieldType": "neptune.BarContent",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -2661,7 +2554,6 @@
 											"fieldParent": "1dfe6acb-82d2-4a7a-c1ba-f6f585827b96",
 											"fieldType": "sap.m.Button",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -2698,7 +2590,6 @@
 									"fieldParent": "23b2a06e-fbd0-4022-89d0-a1d18d0341d7",
 									"fieldType": "neptune.BarContent",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -2717,7 +2608,6 @@
 											"fieldParent": "288aac08-9980-4cf3-9ec1-86ba3f5577ca",
 											"fieldType": "sap.m.Button",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -2771,7 +2661,6 @@
 					"fieldParent": "cf8f53e3-3899-4dfa-f485-4f312f80af19",
 					"fieldType": "sap.m.Page",
 					"script": "",
-					"customComponent": false,
 					"bindingValue": "Generic Object",
 					"bindingType": "u",
 					"bindingSource": "P9",
@@ -2793,7 +2682,6 @@
 							"fieldParent": "423f3daa-88e0-4b61-91d9-9a8cbe456ccb",
 							"fieldType": "sap.m.Bar",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -2812,7 +2700,6 @@
 									"fieldParent": "9ef72ddd-3ec3-4048-8643-efc1894b6aa4",
 									"fieldType": "neptune.BarContent",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -2831,7 +2718,6 @@
 											"fieldParent": "e4288677-47c7-4d7a-d020-992564d1c895",
 											"fieldType": "sap.m.Button",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -2861,7 +2747,6 @@
 									"fieldParent": "9ef72ddd-3ec3-4048-8643-efc1894b6aa4",
 									"fieldType": "neptune.BarContent",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -2880,7 +2765,6 @@
 											"fieldParent": "9224a663-ef8d-4a80-8a9b-0d696529be3e",
 											"fieldType": "sap.m.Label",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -2904,7 +2788,6 @@
 							"fieldParent": "423f3daa-88e0-4b61-91d9-9a8cbe456ccb",
 							"fieldType": "sap.m.ObjectHeader",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -2944,7 +2827,6 @@
 									"fieldParent": "363b2397-ae71-4225-b601-120c1e71ba13",
 									"fieldType": "sap.m.ObjectStatus",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -2980,7 +2862,6 @@
 							"fieldParent": "423f3daa-88e0-4b61-91d9-9a8cbe456ccb",
 							"fieldType": "sap.m.IconTabBar",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -2999,7 +2880,6 @@
 									"fieldParent": "c9492f60-307f-4362-ebbe-d733519436e3",
 									"fieldType": "sap.m.IconTabFilter",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -3018,7 +2898,6 @@
 											"fieldParent": "d5bfdb9e-6de8-4c40-f263-b19e981776d3",
 											"fieldType": "sap.m.Panel",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -3051,7 +2930,6 @@
 													"fieldParent": "efc985e5-f52b-4e75-ba07-fc5a218d451a",
 													"fieldType": "sap.ui.layout.form.SimpleForm",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -3098,7 +2976,6 @@
 															"fieldParent": "894226bf-dab3-46c3-8196-b7cece85fa91",
 															"fieldType": "sap.m.Label",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -3125,7 +3002,6 @@
 															"fieldParent": "894226bf-dab3-46c3-8196-b7cece85fa91",
 															"fieldType": "sap.m.Select",
 															"script": "",
-															"customComponent": false,
 															"bindingValue": "Generic Array",
 															"bindingType": "h",
 															"bindingSource": "P9",
@@ -3168,7 +3044,6 @@
 																	"fieldParent": "aafe5bc9-6f4a-4293-f47c-f32dea89c35a",
 																	"fieldType": "sap.ui.core.Item",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -3190,7 +3065,8 @@
 																			"attribute": "text",
 																			"grouping": "Formatter",
 																			"value": "Anonymous Function",
-																			"script": "file://event/sap.ui.core.Item/Item/text.script",
+																			"script": "file://event/sap.ui.core.Item/Item/text.js",
+																			"language": "javascript",
 																			"translation": []
 																		}
 																	],
@@ -3208,7 +3084,6 @@
 											"fieldParent": "d5bfdb9e-6de8-4c40-f263-b19e981776d3",
 											"fieldType": "sap.m.Panel",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -3234,7 +3109,6 @@
 													"fieldParent": "88c3db47-80ad-4488-9108-878f0c790694",
 													"fieldType": "sap.m.Toolbar",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -3253,7 +3127,6 @@
 															"fieldParent": "4d7009fb-b17a-43d4-da42-bc0676211b3e",
 															"fieldType": "sap.m.Text",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -3273,7 +3146,6 @@
 															"fieldParent": "4d7009fb-b17a-43d4-da42-bc0676211b3e",
 															"fieldType": "sap.m.ToolbarSpacer",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [],
@@ -3285,7 +3157,6 @@
 															"fieldParent": "4d7009fb-b17a-43d4-da42-bc0676211b3e",
 															"fieldType": "sap.m.Button",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -3322,7 +3193,6 @@
 													"fieldParent": "88c3db47-80ad-4488-9108-878f0c790694",
 													"fieldType": "sap.m.Table",
 													"script": "",
-													"customComponent": false,
 													"bindingValue": "Generic Array",
 													"bindingType": "h",
 													"bindingSource": "P9",
@@ -3365,7 +3235,6 @@
 															"fieldParent": "ff660af8-98c6-4535-8edc-53af84abe3f9",
 															"fieldType": "sap.m.Column",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [],
@@ -3376,7 +3245,6 @@
 																	"fieldParent": "79ee40c0-bb54-4cab-f719-ddae900badcb",
 																	"fieldType": "sap.m.Text",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -3398,7 +3266,6 @@
 															"fieldParent": "ff660af8-98c6-4535-8edc-53af84abe3f9",
 															"fieldType": "sap.m.Column",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [],
@@ -3409,7 +3276,6 @@
 																	"fieldParent": "4b3f56e7-ae66-463b-e870-81e4d7792e05",
 																	"fieldType": "sap.m.Text",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -3431,7 +3297,6 @@
 															"fieldParent": "ff660af8-98c6-4535-8edc-53af84abe3f9",
 															"fieldType": "sap.m.Column",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -3450,7 +3315,6 @@
 																	"fieldParent": "3e6a2137-e5ff-4ec2-bd1f-049f59d7849f",
 																	"fieldType": "sap.m.Text",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -3472,7 +3336,6 @@
 															"fieldParent": "ff660af8-98c6-4535-8edc-53af84abe3f9",
 															"fieldType": "sap.m.Column",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -3491,7 +3354,6 @@
 																	"fieldParent": "d377f153-91b6-4749-c34d-407e510f62d6",
 																	"fieldType": "sap.m.Text",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -3513,7 +3375,6 @@
 															"fieldParent": "ff660af8-98c6-4535-8edc-53af84abe3f9",
 															"fieldType": "sap.m.Column",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -3539,7 +3400,6 @@
 																	"fieldParent": "9310b1e5-ebba-4db8-b56d-f894dff496dc",
 																	"fieldType": "sap.m.Text",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -3561,7 +3421,6 @@
 															"fieldParent": "ff660af8-98c6-4535-8edc-53af84abe3f9",
 															"fieldType": "sap.m.ColumnListItem",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -3588,7 +3447,6 @@
 																	"fieldParent": "009c975e-4397-4aa0-a383-ff91106ab805",
 																	"fieldType": "sap.m.Text",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -3608,7 +3466,6 @@
 																	"fieldParent": "009c975e-4397-4aa0-a383-ff91106ab805",
 																	"fieldType": "sap.m.Text",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -3628,7 +3485,6 @@
 																	"fieldParent": "009c975e-4397-4aa0-a383-ff91106ab805",
 																	"fieldType": "sap.m.Text",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -3648,7 +3504,6 @@
 																	"fieldParent": "009c975e-4397-4aa0-a383-ff91106ab805",
 																	"fieldType": "sap.m.ObjectNumber",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -3675,7 +3530,6 @@
 																	"fieldParent": "009c975e-4397-4aa0-a383-ff91106ab805",
 																	"fieldType": "sap.m.ObjectNumber",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -3710,7 +3564,6 @@
 									"fieldParent": "c9492f60-307f-4362-ebbe-d733519436e3",
 									"fieldType": "sap.m.IconTabFilter",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -3729,7 +3582,6 @@
 											"fieldParent": "9541da79-ed6e-49b2-b311-a05e1bbc0245",
 											"fieldType": "sap.m.Panel",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -3748,7 +3600,6 @@
 													"fieldParent": "4f2ee646-ee61-4985-a9ea-cd7dd30de431",
 													"fieldType": "sap.m.TextArea",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -3784,7 +3635,6 @@
 											"fieldParent": "9541da79-ed6e-49b2-b311-a05e1bbc0245",
 											"fieldType": "sap.m.List",
 											"script": "",
-											"customComponent": false,
 											"bindingValue": "Generic Array",
 											"bindingType": "h",
 											"bindingSource": "P9",
@@ -3813,7 +3663,6 @@
 													"fieldParent": "e51b57c9-e07b-49e0-a984-6a99ff454a8b",
 													"fieldType": "sap.m.FeedListItem",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -3853,7 +3702,6 @@
 							"fieldParent": "423f3daa-88e0-4b61-91d9-9a8cbe456ccb",
 							"fieldType": "sap.m.Bar",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -3872,7 +3720,6 @@
 									"fieldParent": "7f6fd2c4-850c-421e-c208-241d297b9e82",
 									"fieldType": "neptune.BarContent",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -3891,7 +3738,6 @@
 											"fieldParent": "df4082bb-a744-451b-ba3d-9d9582ffefa2",
 											"fieldType": "sap.m.Button",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -3939,7 +3785,6 @@
 					"fieldParent": "cf8f53e3-3899-4dfa-f485-4f312f80af19",
 					"fieldType": "sap.m.Page",
 					"script": "",
-					"customComponent": false,
 					"bindingValue": "Generic Object",
 					"bindingType": "u",
 					"bindingSource": "P9",
@@ -3961,7 +3806,6 @@
 							"fieldParent": "303e109a-0d66-4d8c-ec07-41bd5f4df6b7",
 							"fieldType": "sap.m.Bar",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -3980,7 +3824,6 @@
 									"fieldParent": "4d3c5334-bd3b-45bf-b111-57489880c516",
 									"fieldType": "neptune.BarContent",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -3999,7 +3842,6 @@
 											"fieldParent": "e61b84c0-49f1-4835-b30e-b96bfcc0d708",
 											"fieldType": "sap.m.Button",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -4029,7 +3871,6 @@
 									"fieldParent": "4d3c5334-bd3b-45bf-b111-57489880c516",
 									"fieldType": "neptune.BarContent",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -4048,7 +3889,6 @@
 											"fieldParent": "0587b966-f3ab-4109-9977-2e86144e5523",
 											"fieldType": "sap.m.Label",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -4072,7 +3912,6 @@
 							"fieldParent": "303e109a-0d66-4d8c-ec07-41bd5f4df6b7",
 							"fieldType": "sap.m.ObjectHeader",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -4112,7 +3951,6 @@
 									"fieldParent": "e8b23999-bc04-4c7a-f578-0fc89e5dc70a",
 									"fieldType": "sap.m.ObjectAttribute",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -4141,7 +3979,6 @@
 							"fieldParent": "303e109a-0d66-4d8c-ec07-41bd5f4df6b7",
 							"fieldType": "sap.m.IconTabBar",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -4160,7 +3997,6 @@
 									"fieldParent": "20436ee8-fc79-4303-eed8-438a6bdc4ce4",
 									"fieldType": "sap.m.IconTabFilter",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -4179,7 +4015,6 @@
 											"fieldParent": "8ce012b0-0963-410d-85fb-2c8e2c49a007",
 											"fieldType": "sap.m.Panel",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -4212,7 +4047,6 @@
 													"fieldParent": "d6284d89-5760-444a-9443-da20606a2e61",
 													"fieldType": "sap.m.Toolbar",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -4231,7 +4065,6 @@
 															"fieldParent": "22947a8d-5cb0-4a86-89cd-17f81a457f88",
 															"fieldType": "sap.m.Text",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -4251,7 +4084,6 @@
 															"fieldParent": "22947a8d-5cb0-4a86-89cd-17f81a457f88",
 															"fieldType": "sap.m.ToolbarSpacer",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [],
@@ -4263,7 +4095,6 @@
 															"fieldParent": "22947a8d-5cb0-4a86-89cd-17f81a457f88",
 															"fieldType": "sap.m.Label",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -4285,7 +4116,8 @@
 																	"attribute": "text",
 																	"grouping": "Formatter",
 																	"value": "Anonymous Function",
-																	"script": "file://event/sap.m.Label/toolInfoText/text.script",
+																	"script": "file://event/sap.m.Label/toolInfoText/text.js",
+																	"language": "javascript",
 																	"translation": []
 																}
 															],
@@ -4299,7 +4131,6 @@
 													"fieldParent": "d6284d89-5760-444a-9443-da20606a2e61",
 													"fieldType": "sap.ui.layout.form.SimpleForm",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -4332,7 +4163,6 @@
 															"fieldParent": "8c64bcc5-c1a9-4f42-b991-9be193cf9abd",
 															"fieldType": "sap.m.Label",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [],
@@ -4344,7 +4174,6 @@
 															"fieldParent": "8c64bcc5-c1a9-4f42-b991-9be193cf9abd",
 															"fieldType": "sap.m.SegmentedButton",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [],
@@ -4355,7 +4184,6 @@
 																	"fieldParent": "71be6b87-aace-43b5-e895-8995ca1be7ee",
 																	"fieldType": "sap.m.Button",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -4375,7 +4203,6 @@
 																	"fieldParent": "71be6b87-aace-43b5-e895-8995ca1be7ee",
 																	"fieldType": "sap.m.Button",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -4397,7 +4224,6 @@
 															"fieldParent": "8c64bcc5-c1a9-4f42-b991-9be193cf9abd",
 															"fieldType": "sap.m.Label",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -4417,7 +4243,6 @@
 															"fieldParent": "8c64bcc5-c1a9-4f42-b991-9be193cf9abd",
 															"fieldType": "sap.m.Input",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -4459,7 +4284,6 @@
 															"fieldParent": "8c64bcc5-c1a9-4f42-b991-9be193cf9abd",
 															"fieldType": "sap.m.Label",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -4479,7 +4303,6 @@
 															"fieldParent": "8c64bcc5-c1a9-4f42-b991-9be193cf9abd",
 															"fieldType": "sap.m.Input",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -4499,7 +4322,6 @@
 															"fieldParent": "8c64bcc5-c1a9-4f42-b991-9be193cf9abd",
 															"fieldType": "sap.m.Label",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -4519,7 +4341,6 @@
 															"fieldParent": "8c64bcc5-c1a9-4f42-b991-9be193cf9abd",
 															"fieldType": "sap.m.Input",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -4546,7 +4367,6 @@
 															"fieldParent": "8c64bcc5-c1a9-4f42-b991-9be193cf9abd",
 															"fieldType": "sap.m.Input",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -4581,7 +4401,6 @@
 															"fieldParent": "8c64bcc5-c1a9-4f42-b991-9be193cf9abd",
 															"fieldType": "sap.m.Label",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -4601,7 +4420,6 @@
 															"fieldParent": "8c64bcc5-c1a9-4f42-b991-9be193cf9abd",
 															"fieldType": "sap.m.Input",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -4643,7 +4461,6 @@
 															"fieldParent": "8c64bcc5-c1a9-4f42-b991-9be193cf9abd",
 															"fieldType": "sap.m.Input",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -4670,7 +4487,6 @@
 															"fieldParent": "8c64bcc5-c1a9-4f42-b991-9be193cf9abd",
 															"fieldType": "sap.m.Label",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -4690,7 +4506,6 @@
 															"fieldParent": "8c64bcc5-c1a9-4f42-b991-9be193cf9abd",
 															"fieldType": "sap.m.DatePicker",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -4717,7 +4532,6 @@
 															"fieldParent": "8c64bcc5-c1a9-4f42-b991-9be193cf9abd",
 															"fieldType": "sap.m.Label",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -4737,7 +4551,6 @@
 															"fieldParent": "8c64bcc5-c1a9-4f42-b991-9be193cf9abd",
 															"fieldType": "sap.m.Input",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -4757,7 +4570,6 @@
 															"fieldParent": "8c64bcc5-c1a9-4f42-b991-9be193cf9abd",
 															"fieldType": "sap.m.Input",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -4788,7 +4600,6 @@
 											"fieldParent": "8ce012b0-0963-410d-85fb-2c8e2c49a007",
 											"fieldType": "sap.m.Panel",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -4821,7 +4632,6 @@
 													"fieldParent": "d0d6fa2a-e74d-4806-c2d2-7e6702fcfad9",
 													"fieldType": "sap.ui.layout.form.SimpleForm",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -4854,7 +4664,6 @@
 															"fieldParent": "48bf525d-c947-4487-b6ab-ee38683fde55",
 															"fieldType": "sap.m.Label",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -4874,7 +4683,6 @@
 															"fieldParent": "48bf525d-c947-4487-b6ab-ee38683fde55",
 															"fieldType": "sap.m.Select",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -4893,7 +4701,6 @@
 																	"fieldParent": "190477f8-1844-43c3-8cb5-f4867a9aa44c",
 																	"fieldType": "sap.ui.core.Item",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [],
@@ -4905,7 +4712,6 @@
 																	"fieldParent": "190477f8-1844-43c3-8cb5-f4867a9aa44c",
 																	"fieldType": "sap.ui.core.Item",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -4932,7 +4738,6 @@
 																	"fieldParent": "190477f8-1844-43c3-8cb5-f4867a9aa44c",
 																	"fieldType": "sap.ui.core.Item",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -4961,7 +4766,6 @@
 															"fieldParent": "48bf525d-c947-4487-b6ab-ee38683fde55",
 															"fieldType": "sap.m.Label",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -4981,7 +4785,6 @@
 															"fieldParent": "48bf525d-c947-4487-b6ab-ee38683fde55",
 															"fieldType": "sap.m.VBox",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [],
@@ -4992,7 +4795,6 @@
 																	"fieldParent": "ce5f907e-c289-4ed6-8106-e59b475ced0a",
 																	"fieldType": "sap.m.Input",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -5027,7 +4829,6 @@
 																	"fieldParent": "ce5f907e-c289-4ed6-8106-e59b475ced0a",
 																	"fieldType": "sap.m.Input",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -5056,7 +4857,6 @@
 															"fieldParent": "48bf525d-c947-4487-b6ab-ee38683fde55",
 															"fieldType": "sap.m.Label",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [
@@ -5076,7 +4876,6 @@
 															"fieldParent": "48bf525d-c947-4487-b6ab-ee38683fde55",
 															"fieldType": "sap.m.VBox",
 															"script": "",
-															"customComponent": false,
 															"request": [],
 															"response": [],
 															"attributes": [],
@@ -5087,7 +4886,6 @@
 																	"fieldParent": "432afdf0-40ff-41ab-c397-f1904751a859",
 																	"fieldType": "sap.m.Input",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -5129,7 +4927,6 @@
 																	"fieldParent": "432afdf0-40ff-41ab-c397-f1904751a859",
 																	"fieldType": "sap.m.Input",
 																	"script": "",
-																	"customComponent": false,
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -5166,7 +4963,6 @@
 							"fieldParent": "303e109a-0d66-4d8c-ec07-41bd5f4df6b7",
 							"fieldType": "sap.m.Bar",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -5185,7 +4981,6 @@
 									"fieldParent": "89c2f1c9-f22d-4fd7-bb4f-97522f1778b3",
 									"fieldType": "neptune.BarContent",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -5204,7 +4999,6 @@
 											"fieldParent": "8cf084b6-aff3-489c-8c90-4364b24ad685",
 											"fieldType": "sap.m.Button",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -5232,7 +5026,6 @@
 											"fieldParent": "8cf084b6-aff3-489c-8c90-4364b24ad685",
 											"fieldType": "sap.m.Button",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -5260,7 +5053,6 @@
 											"fieldParent": "8cf084b6-aff3-489c-8c90-4364b24ad685",
 											"fieldType": "sap.m.Button",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -5293,7 +5085,6 @@
 					"fieldParent": "cf8f53e3-3899-4dfa-f485-4f312f80af19",
 					"fieldType": "sap.m.Page",
 					"script": "",
-					"customComponent": false,
 					"request": [],
 					"response": [],
 					"attributes": [
@@ -5307,12 +5098,181 @@
 					],
 					"data": [
 						{
+							"fieldNo": "56ae4e28-7833-49fa-f44e-db21f936ee8a",
+							"fieldName": "diaDemoGuide",
+							"fieldParent": "bee9cb4d-3fab-4389-8868-d65822b38a39",
+							"fieldType": "sap.m.Dialog",
+							"script": "",
+							"request": [],
+							"response": [],
+							"attributes": [
+								{
+									"attribute": "title",
+									"grouping": "Properties",
+									"value": "How to navigate through this app?",
+									"script": "",
+									"translation": []
+								},
+								{
+									"attribute": "type",
+									"grouping": "Properties",
+									"value": "Message",
+									"script": "",
+									"translation": []
+								},
+								{
+									"attribute": "contentWidth",
+									"grouping": "Properties",
+									"value": "100%",
+									"script": "",
+									"translation": []
+								},
+								{
+									"attribute": "contentHeight",
+									"grouping": "Properties",
+									"value": "100%",
+									"script": "",
+									"translation": []
+								},
+								{
+									"attribute": "verticalScrolling",
+									"grouping": "Properties",
+									"value": "false",
+									"script": "",
+									"translation": []
+								},
+								{
+									"attribute": "enableCompactMode",
+									"grouping": "Properties",
+									"value": "true",
+									"script": "",
+									"translation": []
+								}
+							],
+							"data": [
+								{
+									"fieldNo": "3ca4bd67-3164-44d2-ab45-0b41858af03a",
+									"fieldName": "oBarCustomHeader",
+									"fieldParent": "56ae4e28-7833-49fa-f44e-db21f936ee8a",
+									"fieldType": "sap.m.Bar",
+									"script": "",
+									"request": [],
+									"response": [],
+									"attributes": [
+										{
+											"attribute": "position",
+											"grouping": "Parent",
+											"value": "setCustomHeader",
+											"script": "",
+											"translation": []
+										}
+									],
+									"data": [
+										{
+											"fieldNo": "345685ef-ab68-4bef-b79b-775be634aa88",
+											"fieldName": "Middle1",
+											"fieldParent": "3ca4bd67-3164-44d2-ab45-0b41858af03a",
+											"fieldType": "neptune.BarContent",
+											"script": "",
+											"request": [],
+											"response": [],
+											"attributes": [
+												{
+													"attribute": "position",
+													"grouping": "Parent",
+													"value": "ContentMiddle",
+													"script": "",
+													"translation": []
+												}
+											],
+											"data": []
+										},
+										{
+											"fieldNo": "ccbc6bda-71ca-4dd2-bb37-87ab3daa0cdf",
+											"fieldName": "Right1",
+											"fieldParent": "3ca4bd67-3164-44d2-ab45-0b41858af03a",
+											"fieldType": "neptune.BarContent",
+											"script": "",
+											"request": [],
+											"response": [],
+											"attributes": [
+												{
+													"attribute": "position",
+													"grouping": "Parent",
+													"value": "ContentRight",
+													"script": "",
+													"translation": []
+												}
+											],
+											"data": [
+												{
+													"fieldNo": "29634538-fe11-4ede-dc2b-1230e5e8fe3d",
+													"fieldName": "btndiaDemoGuideClose",
+													"fieldParent": "ccbc6bda-71ca-4dd2-bb37-87ab3daa0cdf",
+													"fieldType": "sap.m.Button",
+													"script": "",
+													"request": [],
+													"response": [],
+													"attributes": [
+														{
+															"attribute": "press",
+															"grouping": "Events",
+															"value": "diaDemoGuide.close();",
+															"script": "diaDemoGuide.close();",
+															"translation": []
+														},
+														{
+															"attribute": "type",
+															"grouping": "Properties",
+															"value": "Negative",
+															"script": "",
+															"translation": []
+														},
+														{
+															"attribute": "icon",
+															"grouping": "Properties",
+															"value": "sap-icon://sys-cancel",
+															"script": "",
+															"translation": []
+														}
+													],
+													"data": []
+												}
+											]
+										}
+									]
+								},
+								{
+									"fieldNo": "3c0cd861-d5f6-4773-eb0c-c01632a197bb",
+									"fieldName": "HTMLObject",
+									"fieldParent": "56ae4e28-7833-49fa-f44e-db21f936ee8a",
+									"fieldType": "sap.ui.core.HTML",
+									"script": "",
+									"request": [],
+									"response": [],
+									"attributes": [],
+									"data": [
+										{
+											"fieldNo": "266f4768-34b4-4151-ae91-e749c612d973",
+											"fieldName": "HTMLCode",
+											"fieldParent": "3c0cd861-d5f6-4773-eb0c-c01632a197bb",
+											"fieldType": "neptune.Html",
+											"script": "file://script/neptune.Html/HTMLCode.script",
+											"request": [],
+											"response": [],
+											"attributes": [],
+											"data": []
+										}
+									]
+								}
+							]
+						},
+						{
 							"fieldNo": "e8e21f75-a6b1-41a3-a05a-4ae3960f6495",
 							"fieldName": "listMatGroup",
 							"fieldParent": "bee9cb4d-3fab-4389-8868-d65822b38a39",
 							"fieldType": "sap.m.SelectDialog",
 							"script": "",
-							"customComponent": false,
 							"bindingValue": "Generic Array",
 							"bindingType": "h",
 							"bindingSource": "P9",
@@ -5350,7 +5310,6 @@
 									"fieldParent": "e8e21f75-a6b1-41a3-a05a-4ae3960f6495",
 									"fieldType": "sap.m.ObjectListItem",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -5379,7 +5338,6 @@
 							"fieldParent": "bee9cb4d-3fab-4389-8868-d65822b38a39",
 							"fieldType": "sap.m.SelectDialog",
 							"script": "",
-							"customComponent": false,
 							"bindingValue": "Generic Array",
 							"bindingType": "h",
 							"bindingSource": "P9",
@@ -5417,7 +5375,6 @@
 									"fieldParent": "c4c181e5-c52a-470f-c40b-e2be122e9820",
 									"fieldType": "sap.m.ObjectListItem",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -5446,7 +5403,6 @@
 							"fieldParent": "bee9cb4d-3fab-4389-8868-d65822b38a39",
 							"fieldType": "sap.m.Button",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -5473,7 +5429,6 @@
 							"fieldParent": "bee9cb4d-3fab-4389-8868-d65822b38a39",
 							"fieldType": "sap.m.Dialog",
 							"script": "",
-							"customComponent": false,
 							"bindingValue": "Generic Object",
 							"bindingType": "u",
 							"bindingSource": "P9",
@@ -5523,7 +5478,6 @@
 									"fieldParent": "ce84cc98-f411-4826-ad04-b6a0b4e14417",
 									"fieldType": "sap.ui.layout.form.SimpleForm",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -5556,7 +5510,6 @@
 											"fieldParent": "f882f5f3-de2b-47bf-aa88-92867ed1e836",
 											"fieldType": "sap.m.Label",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -5576,7 +5529,6 @@
 											"fieldParent": "f882f5f3-de2b-47bf-aa88-92867ed1e836",
 											"fieldType": "sap.m.Input",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -5596,7 +5548,6 @@
 											"fieldParent": "f882f5f3-de2b-47bf-aa88-92867ed1e836",
 											"fieldType": "sap.m.Label",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -5616,7 +5567,6 @@
 											"fieldParent": "f882f5f3-de2b-47bf-aa88-92867ed1e836",
 											"fieldType": "sap.m.Input",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -5638,7 +5588,6 @@
 									"fieldParent": "ce84cc98-f411-4826-ad04-b6a0b4e14417",
 									"fieldType": "sap.m.Table",
 									"script": "",
-									"customComponent": false,
 									"bindingValue": "Generic Array",
 									"bindingType": "h",
 									"bindingSource": "P9",
@@ -5695,7 +5644,6 @@
 											"fieldParent": "8379ab91-f798-4ada-a51b-0ff41cf78a28",
 											"fieldType": "sap.m.Toolbar",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -5714,7 +5662,6 @@
 													"fieldParent": "7ecad8e0-3bec-4db8-dabf-700d734b2cb9",
 													"fieldType": "sap.m.Text",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -5734,7 +5681,6 @@
 													"fieldParent": "7ecad8e0-3bec-4db8-dabf-700d734b2cb9",
 													"fieldType": "sap.m.ToolbarSpacer",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [],
@@ -5746,7 +5692,6 @@
 													"fieldParent": "7ecad8e0-3bec-4db8-dabf-700d734b2cb9",
 													"fieldType": "sap.m.Button",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -5780,7 +5725,6 @@
 													"fieldParent": "7ecad8e0-3bec-4db8-dabf-700d734b2cb9",
 													"fieldType": "sap.m.Button",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -5817,7 +5761,6 @@
 											"fieldParent": "8379ab91-f798-4ada-a51b-0ff41cf78a28",
 											"fieldType": "sap.m.Column",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [],
@@ -5828,7 +5771,6 @@
 													"fieldParent": "d5e105a1-5a25-4fd7-f38e-498a963a3617",
 													"fieldType": "sap.m.Text",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -5850,7 +5792,6 @@
 											"fieldParent": "8379ab91-f798-4ada-a51b-0ff41cf78a28",
 											"fieldType": "sap.m.Column",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [],
@@ -5861,7 +5802,6 @@
 													"fieldParent": "baf118a3-418c-4524-d880-e30a6194c38e",
 													"fieldType": "sap.m.Text",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -5883,7 +5823,6 @@
 											"fieldParent": "8379ab91-f798-4ada-a51b-0ff41cf78a28",
 											"fieldType": "sap.m.Column",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -5902,7 +5841,6 @@
 													"fieldParent": "708d191b-972d-4674-a132-5b310cff639b",
 													"fieldType": "sap.m.Text",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -5924,7 +5862,6 @@
 											"fieldParent": "8379ab91-f798-4ada-a51b-0ff41cf78a28",
 											"fieldType": "sap.m.Column",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -5943,7 +5880,6 @@
 													"fieldParent": "69cab7b0-e91a-440e-9474-8d102be6ea4a",
 													"fieldType": "sap.m.Text",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -5965,7 +5901,6 @@
 											"fieldParent": "8379ab91-f798-4ada-a51b-0ff41cf78a28",
 											"fieldType": "sap.m.ColumnListItem",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -5992,7 +5927,6 @@
 													"fieldParent": "08afdcac-694d-4484-eb57-35e53d9bb8c2",
 													"fieldType": "sap.m.Text",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -6012,7 +5946,6 @@
 													"fieldParent": "08afdcac-694d-4484-eb57-35e53d9bb8c2",
 													"fieldType": "sap.m.Text",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -6032,7 +5965,6 @@
 													"fieldParent": "08afdcac-694d-4484-eb57-35e53d9bb8c2",
 													"fieldType": "sap.m.ObjectNumber",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -6059,7 +5991,6 @@
 													"fieldParent": "08afdcac-694d-4484-eb57-35e53d9bb8c2",
 													"fieldType": "sap.m.ObjectNumber",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -6092,7 +6023,6 @@
 							"fieldParent": "bee9cb4d-3fab-4389-8868-d65822b38a39",
 							"fieldType": "sap.m.Button",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -6120,7 +6050,6 @@
 							"fieldParent": "bee9cb4d-3fab-4389-8868-d65822b38a39",
 							"fieldType": "sap.m.Dialog",
 							"script": "",
-							"customComponent": false,
 							"bindingValue": "Generic Object",
 							"bindingType": "u",
 							"bindingSource": "P9",
@@ -6170,7 +6099,6 @@
 									"fieldParent": "fe63ff62-66ea-4f20-9f30-930828fd4e8b",
 									"fieldType": "sap.ui.layout.form.SimpleForm",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -6203,7 +6131,6 @@
 											"fieldParent": "4761a54d-a6a7-4563-e12f-ac994b9dfc6e",
 											"fieldType": "sap.m.Label",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -6223,7 +6150,6 @@
 											"fieldParent": "4761a54d-a6a7-4563-e12f-ac994b9dfc6e",
 											"fieldType": "sap.m.Input",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -6243,7 +6169,6 @@
 											"fieldParent": "4761a54d-a6a7-4563-e12f-ac994b9dfc6e",
 											"fieldType": "sap.m.Label",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -6263,7 +6188,6 @@
 											"fieldParent": "4761a54d-a6a7-4563-e12f-ac994b9dfc6e",
 											"fieldType": "sap.m.Input",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -6285,7 +6209,6 @@
 									"fieldParent": "fe63ff62-66ea-4f20-9f30-930828fd4e8b",
 									"fieldType": "sap.m.Table",
 									"script": "",
-									"customComponent": false,
 									"bindingValue": "Generic Array",
 									"bindingType": "h",
 									"bindingSource": "P9",
@@ -6342,7 +6265,6 @@
 											"fieldParent": "61aa7afd-b99d-4de9-9ed9-2b7d605874e9",
 											"fieldType": "sap.m.Toolbar",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -6361,7 +6283,6 @@
 													"fieldParent": "63559838-7555-47ec-a8a9-02a5e4c391b6",
 													"fieldType": "sap.m.Text",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -6381,7 +6302,6 @@
 													"fieldParent": "63559838-7555-47ec-a8a9-02a5e4c391b6",
 													"fieldType": "sap.m.ToolbarSpacer",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [],
@@ -6393,7 +6313,6 @@
 													"fieldParent": "63559838-7555-47ec-a8a9-02a5e4c391b6",
 													"fieldType": "sap.m.Button",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -6427,7 +6346,6 @@
 													"fieldParent": "63559838-7555-47ec-a8a9-02a5e4c391b6",
 													"fieldType": "sap.m.Button",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -6464,7 +6382,6 @@
 											"fieldParent": "61aa7afd-b99d-4de9-9ed9-2b7d605874e9",
 											"fieldType": "sap.m.Column",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -6483,7 +6400,6 @@
 													"fieldParent": "3ce83442-014c-4808-caac-b329ddea9566",
 													"fieldType": "sap.m.Text",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -6505,7 +6421,6 @@
 											"fieldParent": "61aa7afd-b99d-4de9-9ed9-2b7d605874e9",
 											"fieldType": "sap.m.Column",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [],
@@ -6516,7 +6431,6 @@
 													"fieldParent": "775665f4-0fc6-4a83-d006-dab838df2c22",
 													"fieldType": "sap.m.Text",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -6538,7 +6452,6 @@
 											"fieldParent": "61aa7afd-b99d-4de9-9ed9-2b7d605874e9",
 											"fieldType": "sap.m.ColumnListItem",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -6565,7 +6478,6 @@
 													"fieldParent": "67561110-a5ce-48c7-fe10-1bd955704701",
 													"fieldType": "sap.m.Text",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -6585,7 +6497,6 @@
 													"fieldParent": "67561110-a5ce-48c7-fe10-1bd955704701",
 													"fieldType": "sap.m.Text",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -6611,7 +6522,6 @@
 							"fieldParent": "bee9cb4d-3fab-4389-8868-d65822b38a39",
 							"fieldType": "sap.m.Button",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -6638,7 +6548,6 @@
 							"fieldParent": "bee9cb4d-3fab-4389-8868-d65822b38a39",
 							"fieldType": "sap.m.Dialog",
 							"script": "",
-							"customComponent": false,
 							"bindingValue": "Generic Object",
 							"bindingType": "u",
 							"bindingSource": "P9",
@@ -6688,7 +6597,6 @@
 									"fieldParent": "3e2754cd-07ed-47ae-deab-0965ebb84adb",
 									"fieldType": "sap.ui.layout.form.SimpleForm",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -6721,7 +6629,6 @@
 											"fieldParent": "f3fb948b-5695-4d47-ca1f-2cb765131457",
 											"fieldType": "sap.m.Label",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -6741,7 +6648,6 @@
 											"fieldParent": "f3fb948b-5695-4d47-ca1f-2cb765131457",
 											"fieldType": "sap.m.Input",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -6761,7 +6667,6 @@
 											"fieldParent": "f3fb948b-5695-4d47-ca1f-2cb765131457",
 											"fieldType": "sap.m.Label",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -6781,7 +6686,6 @@
 											"fieldParent": "f3fb948b-5695-4d47-ca1f-2cb765131457",
 											"fieldType": "sap.m.Input",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -6803,7 +6707,6 @@
 									"fieldParent": "3e2754cd-07ed-47ae-deab-0965ebb84adb",
 									"fieldType": "sap.m.Table",
 									"script": "",
-									"customComponent": false,
 									"bindingValue": "Generic Array",
 									"bindingType": "h",
 									"bindingSource": "P9",
@@ -6853,7 +6756,6 @@
 											"fieldParent": "553efca9-e4a5-4c66-90ea-b190794911f6",
 											"fieldType": "sap.m.Toolbar",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -6872,7 +6774,6 @@
 													"fieldParent": "2db6c4e4-46bc-44cd-fa3c-af4ff1b93593",
 													"fieldType": "sap.m.Text",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -6892,7 +6793,6 @@
 													"fieldParent": "2db6c4e4-46bc-44cd-fa3c-af4ff1b93593",
 													"fieldType": "sap.m.ToolbarSpacer",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [],
@@ -6904,7 +6804,6 @@
 													"fieldParent": "2db6c4e4-46bc-44cd-fa3c-af4ff1b93593",
 													"fieldType": "sap.m.Button",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -6938,7 +6837,6 @@
 													"fieldParent": "2db6c4e4-46bc-44cd-fa3c-af4ff1b93593",
 													"fieldType": "sap.m.Button",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -6975,7 +6873,6 @@
 											"fieldParent": "553efca9-e4a5-4c66-90ea-b190794911f6",
 											"fieldType": "sap.m.Column",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -6994,7 +6891,6 @@
 													"fieldParent": "e114b57d-9a63-46ef-8312-815cd9f66008",
 													"fieldType": "sap.m.Text",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -7016,7 +6912,6 @@
 											"fieldParent": "553efca9-e4a5-4c66-90ea-b190794911f6",
 											"fieldType": "sap.m.Column",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [],
@@ -7027,7 +6922,6 @@
 													"fieldParent": "c01f4125-204f-4864-baa3-6fe38a0d747d",
 													"fieldType": "sap.m.Text",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -7049,7 +6943,6 @@
 											"fieldParent": "553efca9-e4a5-4c66-90ea-b190794911f6",
 											"fieldType": "sap.m.ColumnListItem",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -7068,7 +6961,6 @@
 													"fieldParent": "62f79232-a4d1-448a-a2fb-040dfd2cf7bd",
 													"fieldType": "sap.m.Text",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -7088,7 +6980,6 @@
 													"fieldParent": "62f79232-a4d1-448a-a2fb-040dfd2cf7bd",
 													"fieldType": "sap.m.Text",
 													"script": "",
-													"customComponent": false,
 													"request": [],
 													"response": [],
 													"attributes": [
@@ -7114,7 +7005,6 @@
 							"fieldParent": "bee9cb4d-3fab-4389-8868-d65822b38a39",
 							"fieldType": "sap.m.Button",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -7141,7 +7031,6 @@
 							"fieldParent": "bee9cb4d-3fab-4389-8868-d65822b38a39",
 							"fieldType": "sap.m.Button",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -7169,7 +7058,6 @@
 							"fieldParent": "bee9cb4d-3fab-4389-8868-d65822b38a39",
 							"fieldType": "sap.m.Dialog",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -7202,7 +7090,6 @@
 									"fieldParent": "c433b481-f5c5-4ad2-c01c-a8c39773af68",
 									"fieldType": "sap.ui.layout.form.SimpleForm",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [],
@@ -7213,7 +7100,6 @@
 											"fieldParent": "7ed96bcf-296f-4db0-e4c5-636d4df39150",
 											"fieldType": "sap.m.Text",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -7237,7 +7123,6 @@
 							"fieldParent": "bee9cb4d-3fab-4389-8868-d65822b38a39",
 							"fieldType": "sap.m.Button",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -7264,7 +7149,6 @@
 							"fieldParent": "bee9cb4d-3fab-4389-8868-d65822b38a39",
 							"fieldType": "sap.m.Dialog",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -7290,7 +7174,6 @@
 									"fieldParent": "5b1f2fb9-3f17-45d3-92b3-ef69a2be5b3e",
 									"fieldType": "sap.m.TextArea",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [],
@@ -7304,7 +7187,6 @@
 							"fieldParent": "bee9cb4d-3fab-4389-8868-d65822b38a39",
 							"fieldType": "sap.m.Button",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -7338,7 +7220,6 @@
 							"fieldParent": "bee9cb4d-3fab-4389-8868-d65822b38a39",
 							"fieldType": "sap.m.Button",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -7379,7 +7260,6 @@
 							"fieldParent": "bee9cb4d-3fab-4389-8868-d65822b38a39",
 							"fieldType": "sap.m.Dialog",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -7426,7 +7306,6 @@
 									"fieldParent": "05bd1319-7091-44be-c901-42228122ecc5",
 									"fieldType": "sap.m.VBox",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [],
@@ -7437,7 +7316,6 @@
 											"fieldParent": "de06ba4e-abfa-4dc4-f3ae-99f4d714f0d5",
 											"fieldType": "sap.m.Text",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -7457,7 +7335,6 @@
 											"fieldParent": "de06ba4e-abfa-4dc4-f3ae-99f4d714f0d5",
 											"fieldType": "sap.m.Text",
 											"script": "",
-											"customComponent": false,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -7495,7 +7372,6 @@
 					"fieldParent": 99999,
 					"fieldType": "neptune.folder",
 					"script": "",
-					"customComponent": false,
 					"request": [],
 					"response": [],
 					"attributes": [],
@@ -7506,7 +7382,6 @@
 							"fieldParent": "91c9019d-b04f-4cf8-adf3-71957d7af33e",
 							"fieldType": "sap.m.Panel",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [],
@@ -7518,7 +7393,6 @@
 							"fieldParent": "91c9019d-b04f-4cf8-adf3-71957d7af33e",
 							"fieldType": "neptune.model",
 							"script": "",
-							"customComponent": false,
 							"bindingValue": "ZCL_DANIEL_TEST_APIFACT - aaa>getGET_PR_LIST200",
 							"bindingType": "h",
 							"bindingSource": "API",
@@ -7535,7 +7409,6 @@
 							"fieldParent": "91c9019d-b04f-4cf8-adf3-71957d7af33e",
 							"fieldType": "neptune.model",
 							"script": "",
-							"customComponent": false,
 							"bindingValue": "ZCL_NAD_MM_PR_CREATE_DXP>getGET_PR_DETAILResponse",
 							"bindingType": "h",
 							"bindingSource": "API",
@@ -7552,7 +7425,6 @@
 							"fieldParent": "91c9019d-b04f-4cf8-adf3-71957d7af33e",
 							"fieldType": "neptune.model",
 							"script": "",
-							"customComponent": false,
 							"bindingValue": "ZCL_NAD_MM_PR_CREATE_DXP>getGET_PR_EDITResponse",
 							"bindingType": "h",
 							"bindingSource": "API",
@@ -7569,7 +7441,6 @@
 							"fieldParent": "91c9019d-b04f-4cf8-adf3-71957d7af33e",
 							"fieldType": "neptune.model",
 							"script": "",
-							"customComponent": false,
 							"bindingValue": "ZCL_NAD_MM_PR_CREATE_DXP>postSEARCH_MATERIALResponse",
 							"bindingType": "h",
 							"bindingSource": "API",
@@ -7586,7 +7457,6 @@
 							"fieldParent": "91c9019d-b04f-4cf8-adf3-71957d7af33e",
 							"fieldType": "neptune.model",
 							"script": "",
-							"customComponent": false,
 							"bindingValue": "ZCL_NAD_MM_PR_CREATE_DXP>getGET_DIMENSIONSResponse",
 							"bindingType": "h",
 							"bindingSource": "API",
@@ -7603,7 +7473,6 @@
 							"fieldParent": "91c9019d-b04f-4cf8-adf3-71957d7af33e",
 							"fieldType": "neptune.model",
 							"script": "",
-							"customComponent": false,
 							"bindingValue": "ZCL_NAD_MM_PR_CREATE_DXP>getGET_MAT_GROUPResponse",
 							"bindingType": "h",
 							"bindingSource": "API",
@@ -7620,7 +7489,6 @@
 							"fieldParent": "91c9019d-b04f-4cf8-adf3-71957d7af33e",
 							"fieldType": "neptune.model",
 							"script": "",
-							"customComponent": false,
 							"bindingValue": "ZCL_NAD_MM_PR_CREATE_DXP>postSEARCH_COSTCENTERResponse",
 							"bindingType": "h",
 							"bindingSource": "API",
@@ -7637,7 +7505,6 @@
 							"fieldParent": "91c9019d-b04f-4cf8-adf3-71957d7af33e",
 							"fieldType": "neptune.model",
 							"script": "",
-							"customComponent": false,
 							"bindingValue": "ZCL_NAD_MM_PR_CREATE_DXP>getSEARCH_ORDERResponse",
 							"bindingType": "h",
 							"bindingSource": "API",
@@ -7654,7 +7521,6 @@
 							"fieldParent": "91c9019d-b04f-4cf8-adf3-71957d7af33e",
 							"fieldType": "neptune.model",
 							"script": "",
-							"customComponent": false,
 							"bindingValue": "ZCL_NAD_MM_PR_CREATE_TMP>getADD200",
 							"bindingType": "h",
 							"bindingSource": "API",
@@ -7671,7 +7537,6 @@
 							"fieldParent": "91c9019d-b04f-4cf8-adf3-71957d7af33e",
 							"fieldType": "neptune.model",
 							"script": "",
-							"customComponent": false,
 							"bindingValue": "ZCL_NAD_MM_PR_CREATE_TMP>postSAVE200",
 							"bindingType": "h",
 							"bindingSource": "API",
@@ -7690,7 +7555,6 @@
 					"fieldParent": 99999,
 					"fieldType": "neptune.folder",
 					"script": "",
-					"customComponent": false,
 					"request": [],
 					"response": [],
 					"attributes": [],
@@ -7701,7 +7565,6 @@
 							"fieldParent": "9ed55318-0647-485b-aed0-c0dc361600ca",
 							"fieldType": "sap.m.Text",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -7721,7 +7584,6 @@
 							"fieldParent": "9ed55318-0647-485b-aed0-c0dc361600ca",
 							"fieldType": "sap.m.Text",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -7741,7 +7603,6 @@
 							"fieldParent": "9ed55318-0647-485b-aed0-c0dc361600ca",
 							"fieldType": "sap.m.Text",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -7761,7 +7622,6 @@
 							"fieldParent": "9ed55318-0647-485b-aed0-c0dc361600ca",
 							"fieldType": "sap.m.Text",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -7781,7 +7641,6 @@
 							"fieldParent": "9ed55318-0647-485b-aed0-c0dc361600ca",
 							"fieldType": "sap.m.Text",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -7801,7 +7660,6 @@
 							"fieldParent": "9ed55318-0647-485b-aed0-c0dc361600ca",
 							"fieldType": "sap.m.Text",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -7823,7 +7681,6 @@
 					"fieldParent": 99999,
 					"fieldType": "neptune.folder",
 					"script": "",
-					"customComponent": false,
 					"request": [],
 					"response": [],
 					"attributes": [],
@@ -7834,7 +7691,6 @@
 							"fieldParent": "4538f7e3-fe7d-4b0a-e8a8-09d06012556e",
 							"fieldType": "neptune.Script",
 							"script": "file://script/neptune.Script/Scripts/Init.js",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [],
@@ -7846,7 +7702,6 @@
 							"fieldParent": "4538f7e3-fe7d-4b0a-e8a8-09d06012556e",
 							"fieldType": "neptune.Script",
 							"script": "file://script/neptune.Script/Scripts/PhonegapEvents.js",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [],
@@ -7858,7 +7713,6 @@
 							"fieldParent": "4538f7e3-fe7d-4b0a-e8a8-09d06012556e",
 							"fieldType": "neptune.Script",
 							"script": "file://script/neptune.Script/Scripts/Functions.js",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [],
@@ -7870,7 +7724,6 @@
 							"fieldParent": "4538f7e3-fe7d-4b0a-e8a8-09d06012556e",
 							"fieldType": "neptune.Script",
 							"script": "file://script/neptune.Script/Scripts/Office.js",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [],
@@ -7882,7 +7735,6 @@
 							"fieldParent": "4538f7e3-fe7d-4b0a-e8a8-09d06012556e",
 							"fieldType": "neptune.Script",
 							"script": "file://script/neptune.Script/Scripts/LocalJSONdata.js",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [],
@@ -7896,7 +7748,6 @@
 					"fieldParent": 99999,
 					"fieldType": "neptune.folder",
 					"script": "",
-					"customComponent": false,
 					"request": [],
 					"response": [],
 					"attributes": [],
@@ -7907,7 +7758,6 @@
 							"fieldParent": "0a2a9d45-ca32-4b80-e8c3-b7b03a0bb2b1",
 							"fieldType": "neptune.restapi",
 							"script": "",
-							"customComponent": false,
 							"restSource": "0a0be628-0788-f011-b3ce-000d3ab3697b",
 							"restOperation": "31196ebc-d650-4c1b-bf43-a4ed961d5d93",
 							"request": [],
@@ -7944,7 +7794,6 @@
 							"fieldParent": "0a2a9d45-ca32-4b80-e8c3-b7b03a0bb2b1",
 							"fieldType": "neptune.restapi",
 							"script": "",
-							"customComponent": false,
 							"restSource": "0a0be628-0788-f011-b3ce-000d3ab3697b",
 							"restOperation": "357907d1-8c52-4a76-93d9-5bf9fd56008f",
 							"request": [],
@@ -7988,7 +7837,6 @@
 							"fieldParent": "0a2a9d45-ca32-4b80-e8c3-b7b03a0bb2b1",
 							"fieldType": "neptune.restapi",
 							"script": "",
-							"customComponent": false,
 							"restSource": "0a0be628-0788-f011-b3ce-000d3ab3697b",
 							"restOperation": "a5c2bf0f-12d8-4004-af93-a63a0e9efb22",
 							"request": [],
@@ -8025,7 +7873,6 @@
 							"fieldParent": "0a2a9d45-ca32-4b80-e8c3-b7b03a0bb2b1",
 							"fieldType": "neptune.restapi",
 							"script": "",
-							"customComponent": false,
 							"restSource": "0a0be628-0788-f011-b3ce-000d3ab3697b",
 							"restOperation": "52349d58-2b74-4b31-a709-085b7bec02c0",
 							"request": [],
@@ -8062,7 +7909,6 @@
 							"fieldParent": "0a2a9d45-ca32-4b80-e8c3-b7b03a0bb2b1",
 							"fieldType": "neptune.restapi",
 							"script": "",
-							"customComponent": false,
 							"restSource": "0a0be628-0788-f011-b3ce-000d3ab3697b",
 							"restOperation": "552584fe-830e-4dc6-bb76-30e6124f4773",
 							"request": [],
@@ -8099,7 +7945,6 @@
 							"fieldParent": "0a2a9d45-ca32-4b80-e8c3-b7b03a0bb2b1",
 							"fieldType": "neptune.restapi",
 							"script": "",
-							"customComponent": false,
 							"restSource": "0a0be628-0788-f011-b3ce-000d3ab3697b",
 							"restOperation": "5528d19d-f738-4fe8-bdf1-28088f359ea8",
 							"request": [],
@@ -8136,7 +7981,6 @@
 							"fieldParent": "0a2a9d45-ca32-4b80-e8c3-b7b03a0bb2b1",
 							"fieldType": "neptune.restapi",
 							"script": "",
-							"customComponent": false,
 							"restSource": "0a0be628-0788-f011-b3ce-000d3ab3697b",
 							"restOperation": "695b9097-c50f-4ed4-bc3c-02f12fc51400",
 							"request": [],
@@ -8173,7 +8017,6 @@
 							"fieldParent": "0a2a9d45-ca32-4b80-e8c3-b7b03a0bb2b1",
 							"fieldType": "neptune.restapi",
 							"script": "",
-							"customComponent": false,
 							"restSource": "0a0be628-0788-f011-b3ce-000d3ab3697b",
 							"restOperation": "83571cfb-f7ef-42a9-9927-3fcf13c9fba8",
 							"request": [],
@@ -8209,7 +8052,6 @@
 							"fieldParent": "0a2a9d45-ca32-4b80-e8c3-b7b03a0bb2b1",
 							"fieldType": "neptune.restapi",
 							"script": "",
-							"customComponent": false,
 							"restSource": "0a0be628-0788-f011-b3ce-000d3ab3697b",
 							"restOperation": "ff20c30e-1921-4068-b0f7-1799b84e86b8",
 							"request": [],
@@ -8245,7 +8087,6 @@
 							"fieldParent": "0a2a9d45-ca32-4b80-e8c3-b7b03a0bb2b1",
 							"fieldType": "neptune.restapi",
 							"script": "",
-							"customComponent": false,
 							"restSource": "0a0be628-0788-f011-b3ce-000d3ab3697b",
 							"restOperation": "08350b05-8bbf-4cd0-b4a3-dce78ba0f05e",
 							"request": [],
@@ -8261,7 +8102,8 @@
 									"attribute": "ajaxSuccess",
 									"grouping": "Events",
 									"value": "Anonymous Function",
-									"script": "file://event/neptune.restapi/SAVE/ajaxSuccess.script",
+									"script": "file://event/neptune.restapi/SAVE/ajaxSuccess.js",
+									"language": "javascript",
 									"translation": []
 								}
 							],
@@ -8277,7 +8119,7 @@
 		}
 	],
 	"componentInterface": [],
-	"ver": "25.09.17.0937",
+	"ver": "26.04.02.1035",
 	"application": "zui_nad_mm_pr_create_tmp",
 	"title": "",
 	"description": "",

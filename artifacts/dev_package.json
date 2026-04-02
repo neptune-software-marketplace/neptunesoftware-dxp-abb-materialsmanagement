@@ -8,7 +8,7 @@
 	},
 	"name": "neptunesoftware-dxp-abb-materialsmanagement",
 	"description": "Materials Management Bundle",
-	"ver": "26.01.21.1430",
+	"ver": "26.04.02.1041",
 	"enableCICD": true,
 	"internalReadOnly": false,
 	"oeVersion": null,

@@ -11,8 +11,8 @@ sap.ui.getCore().attachInit(function () {
 
     oApp.setBusy(true);
     // apiGET_PR_LIST();
-    
-    // diaDemoGuide.open();
+
+    diaDemoGuide.open();
 });
 
 // New Comment
